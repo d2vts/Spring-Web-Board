@@ -1,5 +1,9 @@
 package com.bjts.board.controller;
 
+
+public class LoginController {
+
+
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
@@ -25,7 +29,7 @@ public class LoginController {
 	
 	@RequestMapping("/")
 	public String home(Locale locale, Model model) {
-		
+	
 		return "home";
 	}
 	
@@ -50,4 +54,5 @@ public class LoginController {
 		}
 		return "login";
 	}
+
 }

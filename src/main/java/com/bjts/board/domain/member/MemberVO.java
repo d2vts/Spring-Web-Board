@@ -1,6 +1,12 @@
 package com.bjts.board.domain.member;
 
+
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
+import java.util.Date;
+
 
 public class MemberVO {
 	private int idNum;
@@ -14,7 +20,7 @@ public class MemberVO {
 	private Date cDate;
 	
 	
-	
+
 	public MemberVO(int idNum, String userId, String userPassword, String userName, String userNickname,
 			String userEmail, String userAddress, String userGender, Date cDate) {
 		this.idNum = idNum;
@@ -27,7 +33,21 @@ public class MemberVO {
 		this.userGender = userGender;
 		this.cDate = cDate;
 	}
+
 	
+	
+	public MemberVO(String userId, String userPassword, String userName, String userNickname, String userEmail,
+			String userAddress, String userGender) {
+		this.userId = userId;
+		this.userPassword = userPassword;
+		this.userName = userName;
+		this.userNickname = userNickname;
+		this.userEmail = userEmail;
+		this.userAddress = userAddress;
+		this.userGender = userGender;
+	}
+
+
 	public MemberVO() {
 		
 	}
