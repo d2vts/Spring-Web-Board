@@ -1,5 +1,8 @@
 package com.bjts.board.service.login;
 
-public class LoginService {
-
+public interface LoginService {
+	
+	String valueCheckId(String id);
+	
+	Boolean valueCheckPassword(String id, String password);
 }

@@ -9,7 +9,10 @@
 <h1>
 	Hello world!  
 </h1>
-
-<P>  The time on the server is ${serverTime}. </P>
+	<form action="login" method="post">
+		이름 : <input type="text" name="id">
+		비밀번호 : <input type="password" name="password">
+		<input type="submit">
+	</form>
 </body>
 </html>

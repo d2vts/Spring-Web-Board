@@ -1,5 +1,8 @@
 package com.bjts.board.dao.login;
 
-public class LoginDao {
+public interface LoginDao {
 
+	public String valueCheckId(String id);
+	
+	public String valueCheckPassword(String password);
 }
