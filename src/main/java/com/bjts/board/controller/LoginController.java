@@ -9,4 +9,8 @@ public class LoginController {
 	public String show(Model model) {
 		return "list";
 	}
+	
+	@RequestMapping
+	public String test(Model model){
+		return "test";
 }
