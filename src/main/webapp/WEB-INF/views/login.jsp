@@ -1,12 +1,18 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>Insert title here</title>
+	<title>Home</title>
 </head>
 <body>
-	·Î±×ÀÎ °á°ú : ${success}
+<h1>
+	Hello world!  
+</h1>
+	<form action="login" method="post">
+		ì´ë¦„ : <input type="text" name="id">
+		ë¹„ë°€ë²ˆí˜¸ : <input type="password" name="password">
+		<input type="submit">
+	</form>
 </body>
 </html>

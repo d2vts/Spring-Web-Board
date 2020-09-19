@@ -1,8 +1,6 @@
 package com.bjts.board.controller;
 
 
-public class LoginController {
-
 
 import java.util.Locale;
 
@@ -33,6 +31,14 @@ public class LoginController {
 		return "home";
 	}
 	
+	@RequestMapping("/login")
+	public String login(Model model) {
+	
+		return "login";
+	}
+	
+	
+	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String login(HttpServletRequest request, Model model, HttpSession session) {
 		String id = request.getParameter("id");
@@ -44,15 +50,15 @@ public class LoginController {
 			if(id.equals(loginService.valueCheckId(id))) {
 				if(loginService.valueCheckPassword(id, password)) {
 					model.addAttribute("success", "성공");
-					return "login";
+					return "login_test";
 				}
 				else {
 					model.addAttribute("success", "실패");
-					return "login";
+					return "login_test";
 				}
 			}
 		}
-		return "login";
+		return "login_test";
 	}
 
 }

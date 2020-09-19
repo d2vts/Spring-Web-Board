@@ -7,11 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-<h1> Home </h1>
-
-<button><a href="mypage">마이페이지</a></button>
-<button><a href="login">로그인</a></button>
-<button><a href="sign_up">회원가입</a></button>
+	로그인 결과 : ${success}
 </body>
 </html>
