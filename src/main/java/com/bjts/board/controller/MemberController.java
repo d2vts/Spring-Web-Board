@@ -48,10 +48,15 @@ public class MemberController {
 	public String sign_up(Model model) {
 		logger.info("sign_up()-GET");
 		
-		
-		
 		return "sign_up";
 	}
+	
+	@RequestMapping("mypage")
+	public String mypage(Model model) {
+		
+		return "mypage";
+	}
+	
 	
 	@RequestMapping(method = RequestMethod.POST, value="/sign_up")
 	public String sign_up(HttpServletRequest request, Model model) {
