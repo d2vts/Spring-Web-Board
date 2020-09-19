@@ -1,9 +1,5 @@
 package com.bjts.board.controller;
 
-
-public class LoginController {
-
-
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;

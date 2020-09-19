@@ -19,7 +19,6 @@ public class LoginServiceImpl implements LoginService{
 	@Override
 	public Boolean valueCheckPassword(String id, String password) {
 		String memberPass = loginDao.valueCheckPassword(id);
-		System.out.println(memberPass);
 		if(memberPass.equals(password))
 			return true;
 		else
