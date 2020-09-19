@@ -6,20 +6,24 @@ import java.sql.SQLException;
 
 import javax.sql.DataSource;
 
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 
 import com.bjts.board.domain.member.MemberVO;
 
-import temp.Constant;
-
-public class MemberDaoImpl {
+public class MemberDaoImpl implements MemberDao {
 
 	DataSource dataSource;
 
 	JdbcTemplate template = null;
 
+	@Autowired
+	private SqlSession sqlSession;
+	
+	private static final String namespace= "com.bjts.board.dao.member.MemberDao";
+	
 	@Autowired
 	public void setTemplate(JdbcTemplate template) {
 		this.template = template;
@@ -31,7 +35,7 @@ public class MemberDaoImpl {
 	
 	
 	
-	
+	@Override
 	public void join(String userId, String userPassword, String userName, String userNickname,
 			String userEmail, String userAddress, String userGender){
 		
@@ -54,6 +58,39 @@ public class MemberDaoImpl {
 		});
 		
 	}
+
+
+	@Override
+	public String CheckPasswordMatch(String id) {
+		
+		
+		return sqlSession.selectOne(namespace + ".CheckPasswordMatch", id);
+	}
+
+
+	@Override
+	public void update_password(String id, String newpassword) {
+		
+		MemberVO memberVO = new MemberVO();
+		memberVO.setUserId(id);
+		memberVO.setUserPassword(newpassword);
+		
+		sqlSession.update(namespace + ".update_password", memberVO);
+	}
+
+
+	@Override
+	public void delete(String id) {
+		
+		sqlSession.delete(namespace + ".delete", id);
+		
+	}
+	
+	
+	
+	
+	
+	
 	
 	
 }

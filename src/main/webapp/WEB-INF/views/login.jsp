@@ -3,7 +3,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<<<<<<< HEAD
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -12,11 +11,9 @@
 	<title>Home</title>
 </head>
 <body>
-=======
 	<title>Home</title>
 </head>
 <body>
->>>>>>> bf025d95abf79feb7af7077f76ef10cdaf76c553
 <h1>
 	Hello world!  
 </h1>

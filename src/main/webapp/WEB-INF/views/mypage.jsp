@@ -10,9 +10,9 @@
 
 <h1>마이페이지</h1>
 
-<button><a href="/modify_member">회원정보 수정</a></button>
-<button><a href="/change_password">비밀번호 변경</a></button>
-<button><a href="/delete_member">회원탈퇴</a></button>
+<button><a href="mypage/modify_member">회원정보 수정</a></button>
+<button><a href="mypage/change_password">비밀번호 변경</a></button>
+<button><a href="mypage/delete_member">회원탈퇴</a></button>
 
 </body>
 </html>
