@@ -13,4 +13,5 @@ public class LoginController {
 	@RequestMapping
 	public String test(Model model){
 		return "test";
+	}
 }
