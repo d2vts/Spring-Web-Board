@@ -1,5 +1,10 @@
 package com.bjts.board.controller;
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> bf025d95abf79feb7af7077f76ef10cdaf76c553
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
