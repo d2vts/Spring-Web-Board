@@ -1,8 +1,8 @@
-package com.bjts.board.dao.board;
+package com.bjts.board.service.board;
 
 import com.bjts.board.domain.board.BoardVO;
 
-public interface BoardDao {
+public interface BoardService {
 
 	void insertBoard(BoardVO boardVo);
 

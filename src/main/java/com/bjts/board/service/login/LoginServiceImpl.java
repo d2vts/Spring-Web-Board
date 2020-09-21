@@ -24,4 +24,9 @@ public class LoginServiceImpl implements LoginService{
 		else
 			return false;
 	}
+
+	@Override
+	public String getValueNickname(String id) {
+		return loginDao.getValueNickname(id);
+	}
 }

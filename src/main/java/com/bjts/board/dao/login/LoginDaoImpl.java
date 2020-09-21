@@ -22,5 +22,10 @@ public class LoginDaoImpl implements LoginDao{
 	public String valueCheckPassword(String id) {
 		return sqlSession.selectOne(namespace + ".valueCheckPassword", id);
 	}
+
+	@Override
+	public String getValueNickname(String id) {
+		return sqlSession.selectOne(namespace + ".getValueNickname", id);
+	}
 	
 }
