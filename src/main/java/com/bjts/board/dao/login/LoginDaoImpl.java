@@ -14,9 +14,8 @@ public class LoginDaoImpl implements LoginDao{
 
 	@Override
 	public String valueCheckId(String id) {
-		String s = sqlSession.selectOne(namespace + ".valueCheckId", id);
-		System.out.println(s);
-		return s;
+		String userId = sqlSession.selectOne(namespace + ".valueCheckId", id);
+		return userId;
 	}
 
 	@Override

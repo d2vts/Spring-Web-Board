@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>modify</title>
 </head>
 <body>
-	<form action="modify" method="POST">
+	<form action="modify_member" method="POST">
 		아이디 : <input type="text" name="userId" value="${member.userId }" readonly> <br/>
 		이름 : <input type="text" name="userName" value="${member.userName }" readonly><br/>
 		닉네임 : <input type="text" name="userNickname" value="${member.userNickname }"><br/>
