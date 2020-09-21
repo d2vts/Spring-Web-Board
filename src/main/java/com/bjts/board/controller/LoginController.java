@@ -1,10 +1,5 @@
 package com.bjts.board.controller;
 
-<<<<<<< HEAD
-=======
-
-
->>>>>>> bf025d95abf79feb7af7077f76ef10cdaf76c553
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
@@ -33,7 +28,12 @@ public class LoginController {
 	
 		return "home";
 	}
-	
+
+	@RequestMapping
+	public String test(Model model){
+		return "test";
+	}
+
 	@RequestMapping("/login")
 	public String login(Model model) {
 	
@@ -52,6 +52,7 @@ public class LoginController {
 		else {
 			if(id.equals(loginService.valueCheckId(id))) {
 				if(loginService.valueCheckPassword(id, password)) {
+					session.setAttribute("userId", id);
 					model.addAttribute("success", "성공");
 					return "login_test";
 				}
@@ -60,8 +61,11 @@ public class LoginController {
 					return "login_test";
 				}
 			}
+			else {
+				model.addAttribute("success", "실패");
+				return "login_test";
+			}
 		}
 		return "login_test";
 	}
-
 }

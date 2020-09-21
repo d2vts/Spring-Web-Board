@@ -2,6 +2,8 @@ package com.bjts.board.service.member;
 
 import org.springframework.ui.Model;
 
+import com.bjts.board.domain.member.MemberVO;
+
 public interface MemberService {
 	
 	// 회원가입 아이디 중복 체크
@@ -24,5 +26,8 @@ public interface MemberService {
 	// Address와 Gender는 형식과 중복체크 X
 	void join(Model model);
 	
+	MemberVO getMemberInfo(String id);
+
+	void update(MemberVO memberVo);
 	
 }

@@ -43,9 +43,9 @@
 
 	</beans:bean>
 	
-	<beans:bean name="daoImpl" class="com.bjts.board.dao.member.MemberDaoImpl">
+	<!-- <beans:bean name="daoImpl" class="com.bjts.board.dao.member.MemberDaoImpl">
 	<beans:property name="template" ref="template"></beans:property>
-	</beans:bean>
+	</beans:bean> -->
 	
 	
 	<beans:bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">

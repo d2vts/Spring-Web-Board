@@ -6,19 +6,27 @@ import java.sql.SQLException;
 
 import javax.sql.DataSource;
 
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
+import org.springframework.stereotype.Repository;
 
 import com.bjts.board.domain.member.MemberVO;
 
 import temp.Constant;
 
-public class MemberDaoImpl {
+@Repository
+public class MemberDaoImpl implements MemberDao{
 
 	DataSource dataSource;
+	
+	@Autowired
+	private SqlSession sqlSession;
+	
+	private static final String namespace="com.bjts.board.dao.member.MemberDao";
 
-	JdbcTemplate template = null;
+	JdbcTemplate template;
 
 	@Autowired
 	public void setTemplate(JdbcTemplate template) {
@@ -31,7 +39,7 @@ public class MemberDaoImpl {
 	
 	
 	
-	
+	@Override
 	public void join(String userId, String userPassword, String userName, String userNickname,
 			String userEmail, String userAddress, String userGender){
 		
@@ -53,6 +61,18 @@ public class MemberDaoImpl {
 			}
 		});
 		
+	}
+
+
+	@Override
+	public MemberVO getMemberInfo(String id) {
+		return sqlSession.selectOne(namespace + ".getMemberInfo", id);
+	}
+
+
+	@Override
+	public void update(MemberVO memberVo) {
+		sqlSession.update(namespace + ".update", memberVo);
 	}
 	
 	
