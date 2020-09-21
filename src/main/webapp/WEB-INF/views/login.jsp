@@ -7,13 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	로그인 결과 : ${success}
-	<title>Home</title>
-</head>
-<body>
-	<title>Home</title>
-</head>
-<body>
 <h1>
 	Hello world!  
 </h1>

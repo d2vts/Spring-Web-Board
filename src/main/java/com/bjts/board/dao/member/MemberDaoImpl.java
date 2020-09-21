@@ -10,14 +10,23 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
+import org.springframework.stereotype.Repository;
 
 import com.bjts.board.domain.member.MemberVO;
 
-public class MemberDaoImpl implements MemberDao {
+import temp.Constant;
+
+@Repository
+public class MemberDaoImpl implements MemberDao{
 
 	DataSource dataSource;
+	
+	@Autowired
+	private SqlSession sqlSession;
+	
+	private static final String namespace="com.bjts.board.dao.member.MemberDao";
 
-	JdbcTemplate template = null;
+	JdbcTemplate template;
 
 	@Autowired
 	private SqlSession sqlSession;
@@ -61,10 +70,14 @@ public class MemberDaoImpl implements MemberDao {
 
 
 	@Override
+
 	public String CheckPasswordMatch(String id) {
-		
-		
 		return sqlSession.selectOne(namespace + ".CheckPasswordMatch", id);
+  }
+  
+  @Override
+	public MemberVO getMemberInfo(String id) {
+		return sqlSession.selectOne(namespace + ".getMemberInfo", id);
 	}
 
 
@@ -87,10 +100,10 @@ public class MemberDaoImpl implements MemberDao {
 	}
 	
 	
-	
-	
-	
-	
+@Override
+	public void update(MemberVO memberVo) {
+		sqlSession.update(namespace + ".update", memberVo);
+	}
 	
 	
 }
