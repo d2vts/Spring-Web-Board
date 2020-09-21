@@ -1,7 +1,5 @@
 package com.bjts.board.service.member;
 
-import org.springframework.ui.Model;
-
 import com.bjts.board.domain.member.MemberVO;
 
 public interface MemberService {
@@ -24,7 +22,7 @@ public interface MemberService {
 	// 회원가입 이메일 형식 체크
 //	String checkEmailForm(String userEmail);
 	// Address와 Gender는 형식과 중복체크 X
-	void join(Model model);
+	void joinMemberInfo(MemberVO memberVo);
 	
 
 	String CheckPasswordMatch(String id);

@@ -1,20 +1,13 @@
 package com.bjts.board.dao.member;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-
 import javax.sql.DataSource;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.stereotype.Repository;
 
 import com.bjts.board.domain.member.MemberVO;
-
-import temp.Constant;
 
 @Repository
 public class MemberDaoImpl implements MemberDao{
@@ -27,11 +20,8 @@ public class MemberDaoImpl implements MemberDao{
 	private static final String namespace="com.bjts.board.dao.member.MemberDao";
 
 	JdbcTemplate template;
-
-	@Autowired
-	private SqlSession sqlSession;
 	
-	private static final String namespace= "com.bjts.board.dao.member.MemberDao";
+	private MemberVO memberVO;
 	
 	@Autowired
 	public void setTemplate(JdbcTemplate template) {
@@ -45,26 +35,8 @@ public class MemberDaoImpl implements MemberDao{
 	
 	
 	@Override
-	public void join(String userId, String userPassword, String userName, String userNickname,
-			String userEmail, String userAddress, String userGender){
-		
-		template.update(new PreparedStatementCreator() {
-			@Override
-			public PreparedStatement createPreparedStatement(Connection conn) throws SQLException {
-				String SQL = "INSERT INTO member VALUES(MEMBER_ID_SEQ.NEXTVAL,?,?,?,?,?,?,?,sysdate)";
-				PreparedStatement pstmt = conn.prepareStatement(SQL);
-				
-				pstmt.setString(1, userId);
-				pstmt.setString(2, userPassword);
-				pstmt.setString(3, userName);
-				pstmt.setString(4, userNickname);
-				pstmt.setString(5, userEmail);
-				pstmt.setString(6, userAddress);
-				pstmt.setString(7, userGender);
-				
-				return pstmt;
-			}
-		});
+	public void joinMemberInfo(MemberVO memberVo){
+		sqlSession.insert(namespace + ".joinMemberInfo", memberVo);
 		
 	}
 
@@ -84,25 +56,25 @@ public class MemberDaoImpl implements MemberDao{
 	@Override
 	public void update_password(String id, String newpassword) {
 		
-		MemberVO memberVO = new MemberVO();
+		memberVO = new MemberVO();
 		memberVO.setUserId(id);
 		memberVO.setUserPassword(newpassword);
 		
-		sqlSession.update(namespace + ".update_password", memberVO);
+		sqlSession.update(namespace + ".updateMemberPassword", memberVO);
 	}
 
 
 	@Override
 	public void delete(String id) {
 		
-		sqlSession.delete(namespace + ".delete", id);
+		sqlSession.delete(namespace + ".deleteMemberInfo", id);
 		
 	}
 	
 	
-@Override
+	@Override
 	public void update(MemberVO memberVo) {
-		sqlSession.update(namespace + ".update", memberVo);
+		sqlSession.update(namespace + ".updateMemberInfo", memberVo);
 	}
 	
 	
