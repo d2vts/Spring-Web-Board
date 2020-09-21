@@ -11,6 +11,9 @@ public class BoardVO {
 	private int boardView;
 	private Date cDate;
 	
+	public BoardVO() {
+	}
+	
 	public BoardVO(int idNum, String userId, String userNickname, String boardTitle, String boardContent, int boardView,
 			Date cDate) {
 		this.idNum = idNum;

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bjts.board.dao.board.BoardDao">
+
+	<select id="getBoardInfo" resultType="com.bjts.board.domain.board.BoardVO">
+		SELECT * FROM BOARD WHERE IDNUM = #{value}
+	</select>
+
+	<insert id="insertBoard">
+		INSERT INTO BOARD VALUES(BOARD_ID_SEQ.NEXTVAL,#{userId},#{userNickname},#{boardTitle},#{boardContent},#{boardView},SYSDATE)
+	</insert>
+	
+	<update id="updateBoard">
+		UPDATE BOARD SET BOARDTITLE = #{boardTitle}, BOARDCONTENT = #{boardContent} WHERE IDNUM = #{idNum}
+	</update>
+</mapper> 

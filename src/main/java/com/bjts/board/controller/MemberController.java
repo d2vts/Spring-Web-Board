@@ -56,8 +56,8 @@ public class MemberController {
 			if(id.equals(loginService.valueCheckId(id))) {
 				if(loginService.valueCheckPassword(id, password)) {
 					session.setAttribute("userId", id);
+					session.setAttribute("userNickname", loginService.getValueNickname(id));
 					model.addAttribute("success", "성공");
-					session.setAttribute("id", String.valueOf(id));
 					return "home";
 				}
 				else {
@@ -78,7 +78,6 @@ public class MemberController {
 		logger.info("modify_member()-GET");
 		String session_id = (String) session.getAttribute("userId");
 		memberVo = memberService.getMemberInfo(session_id);
-		System.out.println(memberVo.getUserName());
 		model.addAttribute("member", memberVo);
 		return "member/modify_member";
 	}
@@ -120,7 +119,7 @@ public class MemberController {
 		
 		String password = request.getParameter("userPassword");
 		String newpassword = request.getParameter("newPassword");
-		String id = (String) session.getAttribute("id");
+		String id = (String) session.getAttribute("userId");
 		String dbpassword;
 		if(password.equals("") || password==null) {
 			model.addAttribute("value_status","empty");
@@ -154,7 +153,7 @@ public class MemberController {
 	@RequestMapping(method = RequestMethod.POST, value="/mypage/delete_member")
 	public String delete(HttpServletRequest request, Model model, HttpSession session) {
 		String password = request.getParameter("password");
-		String id = (String) session.getAttribute("id");
+		String id = (String) session.getAttribute("userId");
 		String dbpassword;
 		
 		dbpassword = memberService.CheckPasswordMatch(id);

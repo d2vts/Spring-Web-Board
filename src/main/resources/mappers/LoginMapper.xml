@@ -12,4 +12,8 @@
 	<select id="valueCheckPassword" resultType="String">
 		SELECT USERPASSWORD FROM MEMBER WHERE USERID = #{value}
 	</select>
+	
+	<select id="getValueNickname" resultType="String">
+		SELECT USERNICKNAME FROM MEMBER WHERE USERID = #{value}
+	</select>
 </mapper>
