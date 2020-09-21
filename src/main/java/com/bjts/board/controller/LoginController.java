@@ -54,7 +54,8 @@ public class LoginController {
 				if(loginService.valueCheckPassword(id, password)) {
 					session.setAttribute("userId", id);
 					model.addAttribute("success", "성공");
-					return "login_test";
+					session.setAttribute("id", String.valueOf(id));
+					return "home";
 				}
 				else {
 					model.addAttribute("success", "실패");

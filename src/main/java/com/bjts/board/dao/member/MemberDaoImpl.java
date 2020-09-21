@@ -29,6 +29,11 @@ public class MemberDaoImpl implements MemberDao{
 	JdbcTemplate template;
 
 	@Autowired
+	private SqlSession sqlSession;
+	
+	private static final String namespace= "com.bjts.board.dao.member.MemberDao";
+	
+	@Autowired
 	public void setTemplate(JdbcTemplate template) {
 		this.template = template;
 	}
@@ -65,12 +70,37 @@ public class MemberDaoImpl implements MemberDao{
 
 
 	@Override
+
+	public String CheckPasswordMatch(String id) {
+		return sqlSession.selectOne(namespace + ".CheckPasswordMatch", id);
+  }
+  
+  @Override
 	public MemberVO getMemberInfo(String id) {
 		return sqlSession.selectOne(namespace + ".getMemberInfo", id);
 	}
 
 
 	@Override
+	public void update_password(String id, String newpassword) {
+		
+		MemberVO memberVO = new MemberVO();
+		memberVO.setUserId(id);
+		memberVO.setUserPassword(newpassword);
+		
+		sqlSession.update(namespace + ".update_password", memberVO);
+	}
+
+
+	@Override
+	public void delete(String id) {
+		
+		sqlSession.delete(namespace + ".delete", id);
+		
+	}
+	
+	
+@Override
 	public void update(MemberVO memberVo) {
 		sqlSession.update(namespace + ".update", memberVo);
 	}

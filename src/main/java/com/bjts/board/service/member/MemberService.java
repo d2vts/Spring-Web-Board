@@ -26,8 +26,14 @@ public interface MemberService {
 	// Address와 Gender는 형식과 중복체크 X
 	void join(Model model);
 	
+
+	String CheckPasswordMatch(String id);
+
 	MemberVO getMemberInfo(String id);
 
 	void update(MemberVO memberVo);
 	
+	void update_password(String id, String newpassword);
+
+	void delete(String id);
 }
