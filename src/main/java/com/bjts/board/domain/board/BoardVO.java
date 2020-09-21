@@ -32,6 +32,10 @@ public class BoardVO {
 		this.cDate = cDate;
 	}
 
+	public BoardVO() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public int getIdNum() {
 		return idNum;
 	}

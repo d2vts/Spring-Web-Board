@@ -8,20 +8,25 @@ import com.bjts.board.dao.login.LoginDao;
 @Service
 public class LoginServiceImpl implements LoginService{
 
-	@Autowired
-	private LoginDao loginDao;
-	
-	@Override
-	public String valueCheckId(String id) {
-		return loginDao.valueCheckId(id);
-	}
+    @Autowired
+    private LoginDao loginDao;
 
-	@Override
-	public Boolean valueCheckPassword(String id, String password) {
-		String memberPass = loginDao.valueCheckPassword(id);
-		if(memberPass.equals(password))
-			return true;
-		else
-			return false;
-	}
+    @Override
+    public String valueCheckId(String id) {
+        return loginDao.valueCheckId(id);
+    }
+
+    @Override
+    public Boolean valueCheckPassword(String id, String password) {
+        String memberPass = loginDao.valueCheckPassword(id);
+        if(memberPass.equals(password))
+            return true;
+        else
+            return false;
+    }
+
+    @Override
+    public String getValueNickname(String id) {
+        return loginDao.getValueNickname(id);
+    }
 }
