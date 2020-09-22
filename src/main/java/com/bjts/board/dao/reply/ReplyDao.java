@@ -12,4 +12,6 @@ public interface ReplyDao {
 
 	void insertReply(ReplyVO replyVO);
 
+	void updateReply(ReplyVO replyVO);
+
 }

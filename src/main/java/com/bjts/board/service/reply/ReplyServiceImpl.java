@@ -29,4 +29,10 @@ public class ReplyServiceImpl implements ReplyService {
 		replyDao.insertReply(replyVO);
 	}
 
+	@Override
+	public void updateReply(ReplyVO replyVO) {
+		replyDao.updateReply(replyVO);
+		
+	}
+
 }

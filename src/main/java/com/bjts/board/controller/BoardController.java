@@ -2,9 +2,7 @@ package com.bjts.board.controller;
 
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -19,11 +17,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bjts.board.domain.board.BoardVO;
-import com.bjts.board.domain.member.MemberVO;
 import com.bjts.board.domain.reply.ReplyVO;
 import com.bjts.board.service.board.BoardService;
-import com.bjts.board.service.login.LoginService;
-import com.bjts.board.service.member.MemberService;
 import com.bjts.board.service.reply.ReplyService;
 
 @Controller
@@ -79,13 +74,15 @@ public class BoardController {
 	}
 	
 	@RequestMapping("list/view")
-	public String view(@RequestParam("boardNum") int boardNum, Model model) {
+	public String view(@RequestParam("boardNum") int boardNum, Model model, HttpSession session) {
 		logger.info("view()-GET");
+		String session_nic = (String) session.getAttribute("userNickname");
 		List<ReplyVO> replylist = new ArrayList<ReplyVO>();
 		BoardVO boardVO = boardService.getBoardView(boardNum);
 		replylist = replyService.getReplyView(boardNum);
 		model.addAttribute("board",boardVO);
 		model.addAttribute("replyInfo",replylist);
+		model.addAttribute("userNickname", session_nic);
 		return "board/view_board";
 		
 	}
@@ -94,7 +91,6 @@ public class BoardController {
 	@RequestMapping(value="list/view/write_reply", method = RequestMethod.POST)
     public String write_reply(HttpServletRequest request, Model model, HttpSession session) {
         logger.info("view()-POST");
-        Map<String, String> reply_info = new HashMap<String, String>();
         
         String boardNum = request.getParameter("boardNum");
         String re_content = request.getParameter("re_content");
@@ -140,6 +136,25 @@ public class BoardController {
 		boardService.insertBoard(boardVo);
 		return "redirect:/list";
 	}
+	
+	@RequestMapping(value="list/write_reply", method = RequestMethod.POST)
+	public String write_reply(Model model, HttpServletRequest request) {
+		
+		String re_content = request.getParameter("re_content");
+		int re_idNum = Integer.parseInt(request.getParameter("re_idNum"));
+		int re_boardId = Integer.parseInt(request.getParameter("re_boardId"));
+		
+		ReplyVO replyVO = new ReplyVO();
+		
+		replyVO.setRe_content(re_content);
+		replyVO.setRe_idNum(re_idNum);
+		replyVO.setRe_boardId(re_boardId);
+		replyService.updateReply(replyVO);
+		
+		
+		return"redirect:/list/view?boardNum="+String.valueOf(re_boardId);
+	}
+	
 	
 	
 	
