@@ -56,9 +56,7 @@ public class MemberController {
 			if(id.equals(loginService.valueCheckId(id))) {
 				if(loginService.valueCheckPassword(id, password)) {
 					session.setAttribute("userId", id);
-					String userNickname = loginService.getValueNickname(id);
-					session.setAttribute("userNickname", userNickname);
-					System.out.println((String)session.getAttribute("userNickname"));
+					session.setAttribute("userNickname", loginService.getValueNickname(id));
 					model.addAttribute("success", "성공");
 					return "home";
 				}
@@ -80,7 +78,6 @@ public class MemberController {
 		logger.info("modify_member()-GET");
 		String session_id = (String) session.getAttribute("userId");
 		memberVo = memberService.getMemberInfo(session_id);
-		System.out.println(memberVo.getUserName());
 		model.addAttribute("member", memberVo);
 		return "member/modify_member";
 	}

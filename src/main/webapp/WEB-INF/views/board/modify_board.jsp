@@ -11,11 +11,12 @@
 
 	<form action="modify_board" method="post">
 	    <table>
+	    	<input type="hidden" name="boardNum" value="${board.idNum }">
     		<tr>
-	            <td><input type="text"> 제목자리</td>
+	            <td>제목 : <input type="text" name="boardTitle" value="${board.boardTitle }"></td>
 	        </tr>
 	        <tr>
-	            <td><input type="text"> 게시글자리</td>
+	            <td>내용 : <input type="text" name="boardContent" value="${board.boardContent }"></td>
 	        </tr>
 	        <tr>
 	            <td><input type="submit" value="수정"> <button><a href="">취소</a></button></td>

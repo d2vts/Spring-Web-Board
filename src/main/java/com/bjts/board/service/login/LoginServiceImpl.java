@@ -15,18 +15,18 @@ public class LoginServiceImpl implements LoginService{
     public String valueCheckId(String id) {
         return loginDao.valueCheckId(id);
     }
+    
+	@Override
+	public Boolean valueCheckPassword(String id, String password) {
+		String memberPass = loginDao.valueCheckPassword(id);
+		if(memberPass.equals(password))
+			return true;
+		else
+			return false;
+	}
 
-    @Override
-    public Boolean valueCheckPassword(String id, String password) {
-        String memberPass = loginDao.valueCheckPassword(id);
-        if(memberPass.equals(password))
-            return true;
-        else
-            return false;
-    }
-
-    @Override
-    public String getValueNickname(String id) {
-        return loginDao.getValueNickname(id);
-    }
+	@Override
+	public String getValueNickname(String id) {
+		return loginDao.getValueNickname(id);
+	}
 }
