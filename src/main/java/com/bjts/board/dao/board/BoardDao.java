@@ -6,7 +6,7 @@ import com.bjts.board.domain.board.BoardVO;
 
 public interface BoardDao {
 
-	List<BoardVO> getBoardInfo();
+	List<BoardVO> getBoardInfoAll();
 
 	BoardVO getBoardView(int boardNum);
 

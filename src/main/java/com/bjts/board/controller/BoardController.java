@@ -39,7 +39,7 @@ public class BoardController {
 	public String list(Model model) {
 		logger.info("list()-GET");
 		List<BoardVO> boardlist = new ArrayList<BoardVO>();
-		boardlist = boardService.getBoardInfo();
+		boardlist = boardService.getBoardInfoAll();
 		model.addAttribute("boardInfo", boardlist);
 		
 		System.out.println("보드컨트롤러에서 리스트에 값이 넘어오는지 테스트중 : " + boardlist);
