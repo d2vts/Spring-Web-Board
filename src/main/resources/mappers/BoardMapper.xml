@@ -5,14 +5,27 @@
 
 <mapper namespace="com.bjts.board.dao.board.BoardDao">
 
-	<select id="getBoardInfoAll"
+	<select id="getBoardInfoAll" parameterType="hashmap"
 		resultType="com.bjts.board.domain.board.BoardVO">
-		SELECT * FROM BOARD
+		SELECT * FROM ( SELECT ROWNUM NUM, N.* FROM (SELECT * FROM BOARD WHERE ${field} LIKE '%' ||  #{query} || '%' ORDER BY CDATE DESC) N) WHERE NUM BETWEEN ${startNum} AND ${lastNum}
+	</select>
+	
+	<select id="getBoardInfoTitleNick" parameterType="hashmap"
+		resultType="com.bjts.board.domain.board.BoardVO">
+		SELECT * FROM ( SELECT ROWNUM NUM, N.* FROM (SELECT * FROM BOARD WHERE ${userNickname} LIKE '%' ||  #{query} || '%' OR ${boardTitle} LIKE '%' ||  #{query} || '%' ORDER BY CDATE DESC) N) WHERE NUM BETWEEN ${startNum} AND ${lastNum}
 	</select>
 
 	<select id="getBoardView"
 		resultType="com.bjts.board.domain.board.BoardVO">
 		SELECT * FROM BOARD WHERE idNum=#{value}
+	</select>
+	
+	<select id="getBoardCount" parameterType="hashmap" resultType="int">
+		SELECT COUNT(IDNUM) COUNT FROM (SELECT ROWNUM NUM, N.* FROM (SELECT * FROM BOARD WHERE ${field} LIKE '%' ||  #{query} || '%' ORDER BY CDATE DESC) N)
+	</select>
+	
+	<select id="getBoardCountTitleNick" parameterType="hashmap" resultType="int">
+		SELECT COUNT(IDNUM) COUNT FROM (SELECT ROWNUM NUM, N.* FROM (SELECT * FROM BOARD WHERE ${userNickname} LIKE '%' ||  #{query} || '%' OR ${boardTitle} LIKE '%' ||  #{query} || '%' ORDER BY CDATE DESC) N)
 	</select>
 
 	<delete id="deleteBoard">

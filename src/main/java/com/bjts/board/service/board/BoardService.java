@@ -1,12 +1,13 @@
 package com.bjts.board.service.board;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.bjts.board.domain.board.BoardVO;
 
 public interface BoardService {
 	
-	List<BoardVO> getBoardInfoAll();
+	List<BoardVO> getBoardInfoAll(HashMap<String, String> map);
 
 	BoardVO getBoardView(int boardNum);
 
@@ -17,5 +18,7 @@ public interface BoardService {
 	BoardVO getBoardInfo(int boardNum);
 
 	void updateBoard(BoardVO boardVo);
+
+	int getBoardCount(String field, String query);
 
 }

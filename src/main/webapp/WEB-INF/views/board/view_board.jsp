@@ -41,11 +41,20 @@ function modify(aa){
 			<td>${board.boardContent}</td>
 		</tr>
 		<tr>
-			<td colspan="2"><a
-				href="/board/list/modify_board?boardNum=${board.idNum}">수정하기</a><a
-				href="/board/list/delete_board?boardNum=${board.idNum}">삭제하기</a>
+			<td colspan="2">
+        <a href="/board/list/modify_board?boardNum=${board.idNum}">수정하기</a><a href="/board/list/delete_board?boardNum=${board.idNum}">삭제하기</a>
 				목록으로</td>
 		</tr>
+	
+	</table>
+	
+	<form action="view/write_reply" method="POST">
+	<input type="hidden" name ="boardNum" value="${board.idNum}">
+	<table>
+	<tr>
+	<td><input type="text" name="re_content"></td>
+	<td><input type="submit" value="등록"></td>
+	</tr>
 	</table>
 
 	<form action="view/write_reply" method="POST">

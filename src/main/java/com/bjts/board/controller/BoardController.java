@@ -34,12 +34,37 @@ public class BoardController {
 	
 	
 	@RequestMapping("list")
-	public String list(Model model) {
+	public String list(HttpServletRequest request,  Model model) {
 		logger.info("list()-GET");
-		List<BoardVO> boardlist = new ArrayList<BoardVO>();
-		boardlist = boardService.getBoardInfoAll();
-		model.addAttribute("boardInfo", boardlist);
+		String page = request.getParameter("page");
+		String field = request.getParameter("field");
+		String query = request.getParameter("query");
 		
+		System.out.println(field + " / " + query);
+		if(page == "" || page == null)
+			page = "1";
+		if(field == "" || field == null)
+			field = "BOARDTITLE";
+		if(query == null)
+			query = "";
+		
+		int n_page = Integer.parseInt(page);
+		int startNum = 1+(n_page-1)*10;
+		int lastNum = n_page*10;
+		
+		HashMap<String , String> map = new HashMap<String , String>();
+		map.put("field", field);
+		map.put("query", query);
+		map.put("startNum", String.valueOf(startNum));
+		map.put("lastNum", String.valueOf(lastNum));
+		
+		List<BoardVO> boardlist = new ArrayList<BoardVO>();
+		boardlist = boardService.getBoardInfoAll(map);
+		
+		int count = boardService.getBoardCount(field, query);
+		model.addAttribute("boardInfo", boardlist);
+		model.addAttribute("page", page);
+		model.addAttribute("count", count);
 		System.out.println("보드컨트롤러에서 리스트에 값이 넘어오는지 테스트중 : " + boardlist);
 				
 		return "board/list_board";
@@ -48,7 +73,7 @@ public class BoardController {
 	@RequestMapping("list/modify_board")
 	public String modify_board(BoardVO boardVo, @RequestParam("boardNum") int boardNum, Model model) {
 		logger.info("modify_board()-GET");
-
+		
 		boardVo = boardService.getBoardInfo(boardNum);
 		System.out.println(boardVo);
 		model.addAttribute("board", boardVo);
@@ -91,7 +116,7 @@ public class BoardController {
 	@RequestMapping(value="list/view/write_reply", method = RequestMethod.POST)
     public String write_reply(HttpServletRequest request, Model model, HttpSession session) {
         logger.info("view()-POST");
-        
+
         String boardNum = request.getParameter("boardNum");
         String re_content = request.getParameter("re_content");
         String re_userNickname = (String)session.getAttribute("userNickname");
