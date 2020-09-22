@@ -2,10 +2,12 @@ package com.bjts.board.controller;
 
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
 import com.bjts.board.domain.board.BoardVO;
 import com.bjts.board.domain.member.MemberVO;
 import com.bjts.board.domain.reply.ReplyVO;
@@ -87,6 +90,25 @@ public class BoardController {
 		
 	}
 	
+	
+	@RequestMapping(value="list/view/write_reply", method = RequestMethod.POST)
+    public String write_reply(HttpServletRequest request, Model model, HttpSession session) {
+        logger.info("view()-POST");
+        Map<String, String> reply_info = new HashMap<String, String>();
+        
+        String boardNum = request.getParameter("boardNum");
+        String re_content = request.getParameter("re_content");
+        String re_userNickname = (String)session.getAttribute("userNickname");
+        String re_userId = (String)session.getAttribute("userId");
+        
+        ReplyVO replyVO = new ReplyVO(Integer.parseInt(boardNum), re_userId, re_userNickname, re_content);
+        
+        replyService.insertReply(replyVO);
+        return "redirect:/list/view?boardNum="+boardNum; // 매핑오류나면 볼것
+
+    }
+	
+	
 	@RequestMapping("list/delete_board")
 	public String delete_board(@RequestParam("boardNum") int boardNum, Model model) {
 		
@@ -118,5 +140,7 @@ public class BoardController {
 		boardService.insertBoard(boardVo);
 		return "redirect:/list";
 	}
+	
+	
 	
 }

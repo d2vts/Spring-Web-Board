@@ -1,7 +1,6 @@
 package com.bjts.board.service.reply;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +13,7 @@ public class ReplyServiceImpl implements ReplyService {
 	@Autowired
 	private ReplyDao replyDao;
 	
+
 	@Override
 	public List<ReplyVO> getReplyView(int boardNum) {
 		return replyDao.getReplyView(boardNum);
@@ -22,6 +22,11 @@ public class ReplyServiceImpl implements ReplyService {
 	@Override
 	public void deleteReply(int boardNum) {
 		replyDao.deleteReply(boardNum);
+	}
+	
+	@Override
+	public void insertReply(ReplyVO replyVO) {
+		replyDao.insertReply(replyVO);
 	}
 
 }

@@ -10,4 +10,6 @@ public interface ReplyDao {
 
 	void deleteReply(int boardNum);
 
+	void insertReply(ReplyVO replyVO);
+
 }

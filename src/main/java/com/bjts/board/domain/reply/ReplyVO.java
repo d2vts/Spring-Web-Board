@@ -10,11 +10,10 @@ public class ReplyVO {
 	private String re_userNickname;
 	private String re_content;
 	private Date re_cDate;
-	
+
 	public ReplyVO() {
-		
 	}
-	
+
 	public ReplyVO(int re_idNum, int re_boardId, String re_userId, String re_userNickname, String re_content,
 			Date re_cDate) {
 		this.re_idNum = re_idNum;
@@ -68,10 +67,5 @@ public class ReplyVO {
 	public void setRe_cDate(Date re_cDate) {
 		this.re_cDate = re_cDate;
 	}
-	
-	
-	
-	
-	
 	
 }

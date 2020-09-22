@@ -10,4 +10,6 @@ public interface ReplyService {
 
 	void deleteReply(int boardNum);
 
+	void insertReply(ReplyVO replyVO);
+
 }
