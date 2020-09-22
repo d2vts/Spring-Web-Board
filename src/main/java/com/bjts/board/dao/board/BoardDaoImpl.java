@@ -1,10 +1,12 @@
 package com.bjts.board.dao.board;
 
+import java.util.HashMap;
 import java.util.List;
-import javax.sql.DataSource;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
 import com.bjts.board.domain.board.BoardVO;
 
 @Repository
@@ -17,8 +19,17 @@ public class BoardDaoImpl implements BoardDao {
 	
 	//getBoardInfo() 수정
 	@Override
-	public List<BoardVO> getBoardInfoAll() {
-		return sqlSession.selectList(namespace + ".getBoardInfoAll");
+	public List<BoardVO> getBoardInfoAll(HashMap<String, String> map) {
+		String field = map.get("field");
+		if(!field.equals("titleNick")) {
+			System.out.println("here");
+			return sqlSession.selectList(namespace + ".getBoardInfoAll", map);
+		}
+		else {
+			map.put("userNickname", "userNickname");
+			map.put("boardTitle", "boardTitle");
+			return sqlSession.selectList(namespace + ".getBoardInfoTitleNick", map);
+		}
 	}
 
 	@Override
@@ -44,6 +55,22 @@ public class BoardDaoImpl implements BoardDao {
 	@Override
 	public void updateBoard(BoardVO boardVo) {
 		sqlSession.update(namespace + ".updateBoard", boardVo);
+	}
+
+	@Override
+	public int getBoardCount(String field, String query) {
+		HashMap<String , String> map = new HashMap<String , String>();
+		if(!field.equals("titleNick")) {
+			map.put("field", field);
+			map.put("query", query);
+			return sqlSession.selectOne(namespace + ".getBoardCount", map);
+		}
+		else {
+			map.put("query", query);
+			map.put("userNickname", "userNickname");
+			map.put("boardTitle", "boardTitle");
+			return sqlSession.selectOne(namespace + ".getBoardCountTitleNick", map);
+		}
 	}
 
 }

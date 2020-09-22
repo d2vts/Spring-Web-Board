@@ -6,7 +6,7 @@
 <mapper namespace="com.bjts.board.dao.reply.ReplyDao">
 
 	<select id="getReplyView" resultType="com.bjts.board.domain.reply.ReplyVO">
-		SELECT * FROM REPLY WHERE RE_BOARDID = #{value}
+		SELECT * FROM REPLY WHERE RE_BOARDID = #{value} ORDER BY RE_CDATE DESC
 	</select>
 
 	<delete id="deleteReply">
