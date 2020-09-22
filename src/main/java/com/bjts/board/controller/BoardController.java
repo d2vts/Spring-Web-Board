@@ -19,15 +19,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bjts.board.domain.board.BoardVO;
+import com.bjts.board.domain.member.MemberVO;
 import com.bjts.board.domain.reply.ReplyVO;
 import com.bjts.board.service.board.BoardService;
+import com.bjts.board.service.login.LoginService;
+import com.bjts.board.service.member.MemberService;
 import com.bjts.board.service.reply.ReplyService;
 
 @Controller
 public class BoardController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
-	
 	
 	@Autowired
 	private BoardService boardService;
@@ -79,9 +81,11 @@ public class BoardController {
 	@RequestMapping("list/view")
 	public String view(@RequestParam("boardNum") int boardNum, Model model) {
 		logger.info("view()-GET");
+		List<ReplyVO> replylist = new ArrayList<ReplyVO>();
 		BoardVO boardVO = boardService.getBoardView(boardNum);
+		replylist = replyService.getReplyView(boardNum);
 		model.addAttribute("board",boardVO);
-	
+		model.addAttribute("replyInfo",replylist);
 		return "board/view_board";
 		
 	}
@@ -114,6 +118,14 @@ public class BoardController {
 		boardService.deleteBoard(boardNum);
 		
 		return "redirect:/list";
+	}
+	
+	@RequestMapping("list/delete_reply")
+	public String delete_reply(@RequestParam("boardNum") int boardNum, @RequestParam("replyNum") int replyNum, Model model) {
+		logger.info("delete_reply()-GET");
+		String numBoard = String.valueOf(boardNum);
+		replyService.deleteReply(replyNum);
+		return "redirect:/list/view?boardNum="+numBoard;
 	}
 	
 
