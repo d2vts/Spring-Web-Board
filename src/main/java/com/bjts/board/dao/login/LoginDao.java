@@ -7,4 +7,6 @@ public interface LoginDao {
 	public String valueCheckPassword(String password);
 
 	public String getValueNickname(String id);
+  
 }
+

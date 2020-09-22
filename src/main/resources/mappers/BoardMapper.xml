@@ -6,6 +6,17 @@
 <mapper namespace="com.bjts.board.dao.board.BoardDao">
 
 	<select id="getBoardInfo" resultType="com.bjts.board.domain.board.BoardVO">
+		SELECT * FROM BOARD
+	</select>
+
+	<select id="getBoardView" resultType="com.bjts.board.domain.board.BoardVO">
+		SELECT * FROM BOARD WHERE idNum=#{value}
+	</select>
+
+	<delete id="deleteBoard">
+		DELETE FROM BOARD WHERE idNum=#{value}
+	</delete>
+
 		SELECT * FROM BOARD WHERE IDNUM = #{value}
 	</select>
 
@@ -16,4 +27,5 @@
 	<update id="updateBoard">
 		UPDATE BOARD SET BOARDTITLE = #{boardTitle}, BOARDCONTENT = #{boardContent} WHERE IDNUM = #{idNum}
 	</update>
+
 </mapper> 
