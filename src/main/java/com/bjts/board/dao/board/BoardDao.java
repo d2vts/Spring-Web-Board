@@ -1,12 +1,13 @@
 package com.bjts.board.dao.board;
 
 
+import java.util.HashMap;
 import java.util.List;
 import com.bjts.board.domain.board.BoardVO;
 
 public interface BoardDao {
 
-	List<BoardVO> getBoardInfoAll();
+	List<BoardVO> getBoardInfoAll(HashMap<String, String> map);
 
 	BoardVO getBoardView(int boardNum);
 
@@ -16,5 +17,7 @@ public interface BoardDao {
 	BoardVO getBoardInfo(int boardNum);
 
 	void updateBoard(BoardVO boardVo);
+
+	int getBoardCount(String field, String query);
 
 }

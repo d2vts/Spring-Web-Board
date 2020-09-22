@@ -1,9 +1,11 @@
 package com.bjts.board.service.board;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import com.bjts.board.dao.board.BoardDao;
 import com.bjts.board.domain.board.BoardVO;
 
@@ -14,10 +16,8 @@ public class BoardServiceImpl implements BoardService {
 	private BoardDao boardDao;
 
 	@Override
-	public List<BoardVO> getBoardInfoAll() {
-		List<BoardVO> boardlist = new ArrayList<BoardVO>();
-		boardlist = boardDao.getBoardInfoAll();
-		return boardlist;
+	public List<BoardVO> getBoardInfoAll(HashMap<String, String> map) {
+		return boardDao.getBoardInfoAll(map);
 	}
 
 	@Override
@@ -44,6 +44,11 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public void updateBoard(BoardVO boardVo) {
 		boardDao.updateBoard(boardVo);
+	}
+
+	@Override
+	public int getBoardCount(String field, String query) {
+		return boardDao.getBoardCount(field, query);
 	}
 
 }
