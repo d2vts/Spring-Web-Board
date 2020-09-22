@@ -30,4 +30,10 @@ public class ReplyDaoImpl implements ReplyDao {
 		sqlSession.insert(namespace + ".insertReply", replyVO);
 	}
 
+  @Override
+  	public void updateReply(ReplyVO replyVO) {
+		sqlSession.update(namespace + ".updateReply",replyVO);
+	
+}
+
 }

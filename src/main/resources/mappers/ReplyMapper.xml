@@ -17,5 +17,8 @@
 		INSERT INTO REPLY VALUES(REPLY_ID_SEQ.NEXTVAL, #{re_boardId}, #{re_userId},
 		#{re_userNickname}, #{re_content}, SYSDATE)
 	</insert>
-
+		
+	<update id="updateReply">
+		UPDATE REPLY SET RE_CONTENT=${re_content} WHERE RE_IDNUM=${re_idNum}
+	</update>
 </mapper> 

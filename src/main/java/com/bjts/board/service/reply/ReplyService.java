@@ -12,4 +12,6 @@ public interface ReplyService {
 
 	void insertReply(ReplyVO replyVO);
 
+	void updateReply(ReplyVO replyVO);
+
 }
