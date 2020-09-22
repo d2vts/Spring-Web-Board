@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bjts.board.dao.reply.ReplyDao">
+
+	<insert id="insertReply">
+		INSERT INTO REPLY VALUES(REPLY_ID_SEQ.NEXTVAL, #{re_boardId}, #{re_userId},
+		#{re_userNickname}, #{re_content}, SYSDATE)
+	</insert>
+
+
+
+	<!-- <insert id="insertBoard">
+		INSERT INTO BOARD
+		VALUES(BOARD_ID_SEQ.NEXTVAL,#{userId},#{userNickname},#{boardTitle},#{boardContent},#{boardView},SYSDATE)
+	</insert> -->
+
+
+</mapper> 
