@@ -8,16 +8,15 @@ import com.bjts.board.dao.board.BoardDao;
 import com.bjts.board.domain.board.BoardVO;
 
 @Service
-public class BoardServiceImpl implements BoardService{
-  
+public class BoardServiceImpl implements BoardService {
+
 	@Autowired
 	private BoardDao boardDao;
-	
+
 	@Override
-	public List<BoardVO> getBoardInfo() {
+	public List<BoardVO> getBoardInfoAll() {
 		List<BoardVO> boardlist = new ArrayList<BoardVO>();
-		boardlist = boardDao.getBoardInfo();
-		
+		boardlist = boardDao.getBoardInfoAll();
 		return boardlist;
 	}
 
@@ -29,9 +28,9 @@ public class BoardServiceImpl implements BoardService{
 
 	@Override
 	public void deleteBoard(int boardNum) {
-		
 		boardDao.deleteBoard(boardNum);
-		
+	}
+
 	@Override
 	public void insertBoard(BoardVO boardVo) {
 		boardDao.insertBoard(boardVo);

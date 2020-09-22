@@ -5,27 +5,32 @@
 
 <mapper namespace="com.bjts.board.dao.board.BoardDao">
 
-	<select id="getBoardInfo" resultType="com.bjts.board.domain.board.BoardVO">
+	<select id="getBoardInfoAll"
+		resultType="com.bjts.board.domain.board.BoardVO">
 		SELECT * FROM BOARD
 	</select>
 
-	<select id="getBoardView" resultType="com.bjts.board.domain.board.BoardVO">
+	<select id="getBoardView"
+		resultType="com.bjts.board.domain.board.BoardVO">
 		SELECT * FROM BOARD WHERE idNum=#{value}
 	</select>
 
 	<delete id="deleteBoard">
 		DELETE FROM BOARD WHERE idNum=#{value}
 	</delete>
-
+	
+	<select id="getBoardInfo" resultType="com.bjts.board.domain.board.BoardVO">
 		SELECT * FROM BOARD WHERE IDNUM = #{value}
 	</select>
 
 	<insert id="insertBoard">
-		INSERT INTO BOARD VALUES(BOARD_ID_SEQ.NEXTVAL,#{userId},#{userNickname},#{boardTitle},#{boardContent},#{boardView},SYSDATE)
+		INSERT INTO BOARD
+		VALUES(BOARD_ID_SEQ.NEXTVAL,#{userId},#{userNickname},#{boardTitle},#{boardContent},#{boardView},SYSDATE)
 	</insert>
-	
+
 	<update id="updateBoard">
-		UPDATE BOARD SET BOARDTITLE = #{boardTitle}, BOARDCONTENT = #{boardContent} WHERE IDNUM = #{idNum}
+		UPDATE BOARD SET BOARDTITLE = #{boardTitle},
+		BOARDCONTENT = #{boardContent} WHERE IDNUM = #{idNum}
 	</update>
 
 </mapper> 

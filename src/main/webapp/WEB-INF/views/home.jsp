@@ -13,5 +13,6 @@
 <button><a href="mypage">마이페이지</a></button>
 <button><a href="login">로그인</a></button>
 <button><a href="sign_up">회원가입</a></button>
+<button><a href="list">게시판</a></button>
 </body>
 </html>
