@@ -17,9 +17,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.bjts.board.domain.board.BoardVO;
 import com.bjts.board.domain.member.MemberVO;
+import com.bjts.board.domain.reply.ReplyVO;
 import com.bjts.board.service.board.BoardService;
 import com.bjts.board.service.login.LoginService;
 import com.bjts.board.service.member.MemberService;
+import com.bjts.board.service.reply.ReplyService;
 
 @Controller
 public class BoardController {
@@ -27,12 +29,10 @@ public class BoardController {
 	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
 	
 	@Autowired
-	private BoardService boardSerivce;
-	
-	@Autowired
 	private BoardService boardService;
 	
-	
+	@Autowired
+	private ReplyService replyService;
 	
 	
 	@RequestMapping("list")
@@ -51,7 +51,7 @@ public class BoardController {
 	public String modify_board(BoardVO boardVo, @RequestParam("boardNum") int boardNum, Model model) {
 		logger.info("modify_board()-GET");
 
-		boardVo = boardSerivce.getBoardInfo(boardNum);
+		boardVo = boardService.getBoardInfo(boardNum);
 		System.out.println(boardVo);
 		model.addAttribute("board", boardVo);
 
@@ -64,7 +64,7 @@ public class BoardController {
 		boardVo.setIdNum(Integer.parseInt(request.getParameter("boardNum")));
 		boardVo.setBoardTitle(request.getParameter("boardTitle"));
 		boardVo.setBoardContent(request.getParameter("boardContent"));
-		boardSerivce.updateBoard(boardVo);
+		boardService.updateBoard(boardVo);
 		return "redirect:/list";
 	}
 	
@@ -78,9 +78,11 @@ public class BoardController {
 	@RequestMapping("list/view")
 	public String view(@RequestParam("boardNum") int boardNum, Model model) {
 		logger.info("view()-GET");
+		List<ReplyVO> replylist = new ArrayList<ReplyVO>();
 		BoardVO boardVO = boardService.getBoardView(boardNum);
+		replylist = replyService.getReplyView(boardNum);
 		model.addAttribute("board",boardVO);
-	
+		model.addAttribute("replyInfo",replylist);
 		return "board/view_board";
 		
 	}
@@ -96,6 +98,14 @@ public class BoardController {
 		return "redirect:/list";
 	}
 	
+	@RequestMapping("list/delete_reply")
+	public String delete_reply(@RequestParam("boardNum") int boardNum, @RequestParam("replyNum") int replyNum, Model model) {
+		logger.info("delete_reply()-GET");
+		String numBoard = String.valueOf(boardNum);
+		replyService.deleteReply(replyNum);
+		return "redirect:/list/view?boardNum="+numBoard;
+	}
+	
 
 	@RequestMapping(value="list/write_board", method = RequestMethod.POST)
 	public String write_board(BoardVO boardVo, HttpServletRequest request, Model model, HttpSession session) {
@@ -105,7 +115,7 @@ public class BoardController {
 		boardVo.setBoardTitle(request.getParameter("boardTitle"));
 		boardVo.setBoardContent(request.getParameter("boardContent"));
 		boardVo.setBoardView(1); 
-		boardSerivce.insertBoard(boardVo);
+		boardService.insertBoard(boardVo);
 		return "redirect:/list";
 	}
 	

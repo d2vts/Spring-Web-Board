@@ -90,4 +90,5 @@ public class BoardVO {
 	public void setcDate(Date cDate) {
 		this.cDate = cDate;
 	}
+
 }

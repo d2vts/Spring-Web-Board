@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.bjts.board.dao.reply.ReplyDao">
+
+	<select id="getReplyView" resultType="com.bjts.board.domain.reply.ReplyVO">
+		SELECT * FROM REPLY WHERE RE_BOARDID = #{value}
+	</select>
+
+	<delete id="deleteReply">
+		DELETE FROM REPLY WHERE RE_IDNUM = #{value}
+	</delete>
+
+</mapper> 
