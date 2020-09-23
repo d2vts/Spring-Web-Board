@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.bjts.board.domain.board.BoardVO;
 
@@ -33,7 +34,9 @@ public class BoardDaoImpl implements BoardDao {
 	}
 
 	@Override
+	@Transactional
 	public BoardVO getBoardView(int boardNum) {
+				sqlSession.update(namespace + ".updateView",boardNum);
 		return sqlSession.selectOne(namespace + ".getBoardView", boardNum);
 	}
 
@@ -72,5 +75,12 @@ public class BoardDaoImpl implements BoardDao {
 			return sqlSession.selectOne(namespace + ".getBoardCountTitleNick", map);
 		}
 	}
+
+	/*
+	 * @Override public void updateView(int boardNum) {
+	 * sqlSession.update(namespace + ".updateView",boardNum);
+	 * 
+	 * }
+	 */
 
 }

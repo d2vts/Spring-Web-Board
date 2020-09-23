@@ -51,4 +51,11 @@ public class BoardServiceImpl implements BoardService {
 		return boardDao.getBoardCount(field, query);
 	}
 
+	/*
+	 * @Override public void updateView(int boardNum) {
+	 * boardDao.updateView(boardNum);
+	 * 
+	 * }
+	 */
+
 }

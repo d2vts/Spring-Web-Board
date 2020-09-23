@@ -43,7 +43,7 @@ function modify(aa){
 		<tr>
 			<td colspan="2">
         <a href="/board/list/modify_board?boardNum=${board.idNum}">수정하기</a><a href="/board/list/delete_board?boardNum=${board.idNum}">삭제하기</a>
-				목록으로</td>
+				<a href="/board/list">목록으로</a></td>
 		</tr>
 	
 	</table>

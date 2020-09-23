@@ -21,4 +21,6 @@ public interface BoardService {
 
 	int getBoardCount(String field, String query);
 
+	//void updateView(int boardNum);
+
 }
