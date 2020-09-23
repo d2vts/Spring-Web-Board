@@ -43,10 +43,6 @@
 
 	</beans:bean>
 	
-	<!-- <beans:bean name="daoImpl" class="com.bjts.board.dao.member.MemberDaoImpl">
-	<beans:property name="template" ref="template"></beans:property>
-	</beans:bean> -->
-	
 	<beans:bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 	<beans:property name="dataSource" ref="dataSource"></beans:property>
 	<beans:property name="mapperLocations" value="classpath:mappers/*.xml"></beans:property>
@@ -56,6 +52,18 @@
 	<beans:constructor-arg index="0" ref="sqlSessionFactory"></beans:constructor-arg>
 	</beans:bean>
 	
+
 	<beans:bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+
+	<beans:bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <beans:property name="dataSource" ref="dataSource" ></beans:property>
+    </beans:bean>
+	
+	<interceptors>
+		<interceptor>
+			<mapping path="/list/view/**"/>
+			<beans:bean class="com.bjts.board.interceptor.AuthenticationInterceptor" />
+		</interceptor>
+	</interceptors>
 	
 </beans:beans>

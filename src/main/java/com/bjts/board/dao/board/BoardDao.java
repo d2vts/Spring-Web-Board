@@ -20,4 +20,6 @@ public interface BoardDao {
 
 	int getBoardCount(String field, String query);
 
+	//void updateView(int boardNum);
+
 }
