@@ -30,7 +30,7 @@
 
 		<beans:property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></beans:property>
 
-		<beans:property name="url" value="jdbc:oracle:thin:@localhost:1521/xepdb1"></beans:property>
+		<beans:property name="url" value="jdbc:oracle:thin:@192.168.1.2:1521/xepdb1"></beans:property>
 
 		<beans:property name="username" value="BJTS"></beans:property>
 

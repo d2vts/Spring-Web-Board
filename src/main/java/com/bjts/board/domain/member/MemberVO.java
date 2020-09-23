@@ -1,9 +1,11 @@
 package com.bjts.board.domain.member;
-
-
 import java.util.Date;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -32,4 +34,5 @@ public class MemberVO {
 		this.userAddress = userAddress;
 		this.userGender = userGender;
 	}
+
 }
