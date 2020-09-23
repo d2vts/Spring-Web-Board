@@ -19,6 +19,6 @@
 	</insert>
 		
 	<update id="updateReply">
-		UPDATE REPLY SET RE_CONTENT=${re_content} WHERE RE_IDNUM=${re_idNum}
+		UPDATE REPLY SET RE_CONTENT=#{re_content} WHERE RE_IDNUM=#{re_idNum}
 	</update>
 </mapper> 
