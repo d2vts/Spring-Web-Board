@@ -34,8 +34,8 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public void update_password(String id, String newpassword) {
-		
-		memberDao.update_password(id, newpassword);
+		String encodePass = passwordEncoder.encode(newpassword);
+		memberDao.update_password(id, encodePass);
 		
 	}
 
