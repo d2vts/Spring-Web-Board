@@ -47,15 +47,6 @@ function modify(aa){
 		</tr>
 	
 	</table>
-	
-	<form action="view/write_reply" method="POST">
-	<input type="hidden" name ="boardNum" value="${board.idNum}">
-	<table>
-	<tr>
-	<td><input type="text" name="re_content"></td>
-	<td><input type="submit" value="등록"></td>
-	</tr>
-	</table>
 
 	<form action="view/write_reply" method="POST">
 		<input type="hidden" name="boardNum" value="${board.idNum}">

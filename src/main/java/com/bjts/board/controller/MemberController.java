@@ -45,6 +45,12 @@ public class MemberController {
 		return "member/login";
 	}
 	
+	@RequestMapping("/logout")
+	public String logout(HttpSession session, Model model) {
+		session.removeAttribute("userId");
+		return "redirect:/";
+	}
+	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String login(HttpServletRequest request, Model model, HttpSession session) {
 		String id = request.getParameter("id");
@@ -57,20 +63,17 @@ public class MemberController {
 				if(loginService.valueCheckPassword(id, password)) {
 					session.setAttribute("userId", id);
 					session.setAttribute("userNickname", loginService.getValueNickname(id));
-					model.addAttribute("success", "성공");
-					return "home";
+					return "redirect:/";
 				}
 				else {
-					model.addAttribute("success", "실패");
-					return "member/login_test";
+					return "member/login";
 				}
 			}
 			else {
-				model.addAttribute("success", "실패");
-				return "member/login_test";
+				return "member/login";
 			}
 		}
-		return "member/login_test";
+		return "member/login";
 	}
   
 	@RequestMapping("mypage/modify_member")
@@ -83,7 +86,7 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value="mypage/modify_member", method = RequestMethod.POST)
-	public String modify(MemberVO memberVo, HttpServletRequest request, HttpSession session , Model model) {
+	public String modify(MemberVO memberVo, HttpServletRequest request, HttpSession session, Model model) {
 		logger.info("modify()-POST");
 		memberVo.setUserId((request.getParameter("userId")));
 		memberVo.setUserNickname((request.getParameter("userNickname")));

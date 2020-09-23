@@ -1,6 +1,7 @@
 package com.bjts.board.service.login;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.bjts.board.dao.login.LoginDao;
@@ -10,6 +11,8 @@ public class LoginServiceImpl implements LoginService{
 
     @Autowired
     private LoginDao loginDao;
+    @Autowired
+	private BCryptPasswordEncoder passwordEncoder;
 
     @Override
     public String valueCheckId(String id) {
@@ -18,11 +21,8 @@ public class LoginServiceImpl implements LoginService{
     
 	@Override
 	public Boolean valueCheckPassword(String id, String password) {
-		String memberPass = loginDao.valueCheckPassword(id);
-		if(memberPass.equals(password))
-			return true;
-		else
-			return false;
+		String encodePass = loginDao.valueCheckPassword(id);
+		return passwordEncoder.matches(password, encodePass);
 	}
 
 	@Override
