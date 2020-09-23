@@ -45,5 +45,9 @@
 		UPDATE BOARD SET BOARDTITLE = #{boardTitle},
 		BOARDCONTENT = #{boardContent} WHERE IDNUM = #{idNum}
 	</update>
+	
+	<update id="updateView">
+		UPDATE BOARD SET BOARDVIEW= BOARDVIEW+1 WHERE IDNUM=#{boardNum}
+	</update>
 
 </mapper> 

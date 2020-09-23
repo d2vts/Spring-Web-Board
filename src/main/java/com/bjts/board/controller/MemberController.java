@@ -83,13 +83,14 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value="mypage/modify_member", method = RequestMethod.POST)
-	public String modify(MemberVO memberVo, HttpServletRequest request, Model model) {
+	public String modify(MemberVO memberVo, HttpServletRequest request, HttpSession session , Model model) {
 		logger.info("modify()-POST");
 		memberVo.setUserId((request.getParameter("userId")));
 		memberVo.setUserNickname((request.getParameter("userNickname")));
 		memberVo.setUserEmail((request.getParameter("userEmail")));
 		memberVo.setUserAddress((request.getParameter("userAddress")));
 		memberService.update(memberVo);
+		session.setAttribute("userNickname", request.getParameter("userNickname"));
 		return "redirect:/mypage";
 	}
 	

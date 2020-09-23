@@ -2,6 +2,7 @@ package com.bjts.board.controller;
 
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -101,6 +102,7 @@ public class BoardController {
 	@RequestMapping("list/view")
 	public String view(@RequestParam("boardNum") int boardNum, Model model, HttpSession session) {
 		logger.info("view()-GET");
+		//boardService.updateView(boardNum);
 		String session_nic = (String) session.getAttribute("userNickname");
 		List<ReplyVO> replylist = new ArrayList<ReplyVO>();
 		BoardVO boardVO = boardService.getBoardView(boardNum);
