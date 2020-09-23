@@ -20,7 +20,7 @@ public class MemberDaoImpl implements MemberDao{
 	private static final String namespace="com.bjts.board.dao.member.MemberDao";
 
 	JdbcTemplate template;
-	
+
 	private MemberVO memberVO;
 	
 	@Autowired

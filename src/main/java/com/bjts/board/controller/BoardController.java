@@ -66,7 +66,7 @@ public class BoardController {
 		model.addAttribute("boardInfo", boardlist);
 		model.addAttribute("page", page);
 		model.addAttribute("count", count);
-		System.out.println("보드컨트롤러에서 리스트에 값이 넘어오는지 테스트중 : " + boardlist);
+		System.out.println("보드컨트롤러에서 리스트에 값이 넘어오는지 테스트중 : " + boardlist.get(0).getBoardContent());
 				
 		return "board/list_board";
 	}
