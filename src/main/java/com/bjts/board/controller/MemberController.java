@@ -88,10 +88,6 @@ public class MemberController {
 	@RequestMapping(value="mypage/modify_member", method = RequestMethod.POST)
 	public String modify(MemberVO memberVo, HttpServletRequest request, HttpSession session, Model model) {
 		logger.info("modify()-POST");
-		memberVo.setUserId((request.getParameter("userId")));
-		memberVo.setUserNickname((request.getParameter("userNickname")));
-		memberVo.setUserEmail((request.getParameter("userEmail")));
-		memberVo.setUserAddress((request.getParameter("userAddress")));
 		memberService.update(memberVo);
 		session.setAttribute("userNickname", request.getParameter("userNickname"));
 		return "redirect:/mypage";
@@ -100,13 +96,6 @@ public class MemberController {
 	@RequestMapping(method = RequestMethod.POST, value="/sign_up")
 	public String sign_up(MemberVO memberVo, HttpServletRequest request, Model model) {
 		logger.info("sign_up()-POST");
-		memberVo.setUserId((request.getParameter("userId")));
-		memberVo.setUserPassword((request.getParameter("userPassword")));
-		memberVo.setUserName((request.getParameter("userName")));
-		memberVo.setUserNickname((request.getParameter("userNickname")));
-		memberVo.setUserEmail((request.getParameter("userEmail")));
-		memberVo.setUserAddress((request.getParameter("userAddress")));
-		memberVo.setUserGender((request.getParameter("userGender")));
 		memberService.joinMemberInfo(memberVo);
 		return "redirect:/";
 	}
