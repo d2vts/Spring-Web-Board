@@ -36,7 +36,7 @@ public class BoardDaoImpl implements BoardDao {
 	@Override
 	@Transactional
 	public BoardVO getBoardView(int boardNum) {
-				sqlSession.update(namespace + ".updateView",boardNum);
+		sqlSession.update(namespace + ".updateView",boardNum);
 		return sqlSession.selectOne(namespace + ".getBoardView", boardNum);
 	}
 

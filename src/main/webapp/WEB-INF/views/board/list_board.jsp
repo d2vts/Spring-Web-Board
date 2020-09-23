@@ -41,7 +41,7 @@
 			<td width="500" style="text-align:center" ><a href="/board/list/view?boardNum=${list.idNum}">${list. boardTitle}</a></td>
 			<td>${list. userNickname}</td>
 			<td>${list. boardView}</td>
-			<td>${list. cDate}</td>
+			<td>${list. CDate}</td>
 		</tr>
 		</c:forEach>
 		<tr>

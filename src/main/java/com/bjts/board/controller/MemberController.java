@@ -2,6 +2,7 @@ package com.bjts.board.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -81,6 +82,7 @@ public class MemberController {
 		logger.info("modify_member()-GET");
 		String session_id = (String) session.getAttribute("userId");
 		memberVo = memberService.getMemberInfo(session_id);
+		System.out.println(memberVo.getUserName() + " / " + memberVo.getCDate());
 		model.addAttribute("member", memberVo);
 		return "member/modify_member";
 	}
@@ -88,25 +90,14 @@ public class MemberController {
 	@RequestMapping(value="mypage/modify_member", method = RequestMethod.POST)
 	public String modify(MemberVO memberVo, HttpServletRequest request, HttpSession session, Model model) {
 		logger.info("modify()-POST");
-		memberVo.setUserId((request.getParameter("userId")));
-		memberVo.setUserNickname((request.getParameter("userNickname")));
-		memberVo.setUserEmail((request.getParameter("userEmail")));
-		memberVo.setUserAddress((request.getParameter("userAddress")));
 		memberService.update(memberVo);
 		session.setAttribute("userNickname", request.getParameter("userNickname"));
 		return "redirect:/mypage";
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, value="/sign_up")
-	public String sign_up(MemberVO memberVo, HttpServletRequest request, Model model) {
+	public String sign_up(@Valid MemberVO memberVo, HttpServletRequest request, Model model) {
 		logger.info("sign_up()-POST");
-		memberVo.setUserId((request.getParameter("userId")));
-		memberVo.setUserPassword((request.getParameter("userPassword")));
-		memberVo.setUserName((request.getParameter("userName")));
-		memberVo.setUserNickname((request.getParameter("userNickname")));
-		memberVo.setUserEmail((request.getParameter("userEmail")));
-		memberVo.setUserAddress((request.getParameter("userAddress")));
-		memberVo.setUserGender((request.getParameter("userGender")));
 		memberService.joinMemberInfo(memberVo);
 		return "redirect:/";
 	}
@@ -124,15 +115,13 @@ public class MemberController {
 		String password = request.getParameter("userPassword");
 		String newpassword = request.getParameter("newPassword");
 		String id = (String) session.getAttribute("userId");
-		String dbpassword;
 		if(password.equals("") || password==null) {
 			model.addAttribute("value_status","empty");
 			return "redirect:change_password";
 		}
 		else { // 이제 해야 할것은 서비스 이용해서  비밀번호 값 일치하는지 체크
-			dbpassword = memberService.CheckPasswordMatch(id);
 			// dbpassword에는 현재 세션의 아이디값의 패스워드가 들어가있음
-			if(password.equals(dbpassword)) {
+			if(loginService.valueCheckPassword(id, password)) {
 				
 				memberService.update_password(id,newpassword);
 				
