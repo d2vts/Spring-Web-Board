@@ -23,7 +23,6 @@ public interface MemberService {
 //	String checkEmailForm(String userEmail);
 	// Address와 Gender는 형식과 중복체크 X
 	void joinMemberInfo(MemberVO memberVo);
-	
 
 	String CheckPasswordMatch(String id);
 
@@ -34,4 +33,8 @@ public interface MemberService {
 	void update_password(String id, String newpassword);
 
 	void delete(String id);
+
+	String checkMemberId(String check_id);
+	
+	String checkMemberNickname(String check_nickname);
 }
