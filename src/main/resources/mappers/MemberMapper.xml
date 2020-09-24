@@ -4,7 +4,7 @@
 
 <mapper namespace="com.bjts.board.dao.member.MemberDao">
 
-	<select id="CheckPasswordMatch" resultType="String">
+	<select id="getMemberPassword" resultType="String">
 		SELECT USERPASSWORD FROM MEMBER WHERE USERID = #{value}
 	</select>
 	
@@ -12,8 +12,20 @@
 		SELECT * FROM MEMBER WHERE USERID = #{value}
 	</select>
 	
-	<select id="getValueNickname" resultType="String">
-		SELECT USERNICKNAME FROM MEMBER WHERE USERNICKNAME = #{value}
+	<select id="checkMemberPassword" resultType="String">
+		SELECT USERPASSWORD FROM MEMBER WHERE USERID = #{value}
+	</select>
+	
+	<select id="getMemberId" resultType="String">
+		SELECT USERID FROM MEMBER WHERE USERID=#{check_id}
+	</select>
+
+	<select id="getMemberNickname" resultType="String">
+		SELECT USERNICKNAME FROM MEMBER WHERE USERNICKNAME=#{check_nickname}
+	</select>
+	
+	<select id="getMemberNicknameById" resultType="String">
+		SELECT USERNICKNAME FROM MEMBER WHERE USERID=#{value}
 	</select>
 
 	<insert id="joinMemberInfo">
@@ -31,13 +43,5 @@
 	<delete id="deleteMemberInfo">
 		DELETE FROM MEMBER WHERE USERID=#{value}
 	</delete>
-
-	<select id="checkMemberId" resultType="String">
-		SELECT USERID FROM MEMBER WHERE USERID=#{check_id}
-	</select>
-
-	<select id="checkMemberNickname" resultType="String">
-		SELECT USERNICKNAME FROM MEMBER WHERE USERID=#{check_nickname}
-	</select>
 
 </mapper> 

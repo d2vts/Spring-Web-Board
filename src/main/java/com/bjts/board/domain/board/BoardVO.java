@@ -2,9 +2,7 @@ package com.bjts.board.domain.board;
 
 import java.util.Date;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
 public class BoardVO {

@@ -10,13 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bjts.board.domain.member.MemberVO;
-import com.bjts.board.service.login.LoginService;
 import com.bjts.board.service.member.MemberService;
 import com.bjts.board.validator.MemberValidator;
 
@@ -24,9 +22,6 @@ import com.bjts.board.validator.MemberValidator;
 public class MemberController {
 
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
-	
-	@Autowired
-	private LoginService loginService;
 	
 	@Autowired
 	private MemberService memberService;
@@ -53,6 +48,7 @@ public class MemberController {
 	@RequestMapping("/logout")
 	public String logout(HttpSession session, Model model) {
 		session.removeAttribute("userId");
+		session.removeAttribute("userNickname");
 		return "redirect:/";
 	}
 	
@@ -64,10 +60,10 @@ public class MemberController {
 			session.setAttribute("error", "로그인 실패 했습니다.");
 		}
 		else {
-			if(id.equals(loginService.valueCheckId(id))) {
-				if(loginService.valueCheckPassword(id, password)) {
+			if(id.equals(memberService.getMemberId(id))) {
+				if(memberService.checkMemberPassword(id, password)) {
 					session.setAttribute("userId", id);
-					session.setAttribute("userNickname", loginService.getValueNickname(id));
+					session.setAttribute("userNickname", memberService.getMemberNicknameById(id));
 					return "redirect:/";
 				}
 				else {
@@ -94,7 +90,7 @@ public class MemberController {
 	@RequestMapping(value="mypage/modify_member", method = RequestMethod.POST)
 	public String modify(MemberVO memberVo, HttpServletRequest request, HttpSession session, Model model) {
 		logger.info("modify()-POST");
-		memberService.update(memberVo);
+		memberService.updateMemberInfo(memberVo);
 		session.setAttribute("userNickname", request.getParameter("userNickname"));
 		return "redirect:/mypage";
 	}
@@ -102,8 +98,8 @@ public class MemberController {
 	@RequestMapping(method = RequestMethod.POST, value="/sign_up")
 	public String sign_up(@Valid MemberVO memberVo, Model model, Errors error){
 		logger.info("sign_up()-POST");
-		String db_userId = loginService.valueCheckId(memberVo.getUserId());
-		String db_userNickname = memberService.getValueNickname(memberVo.getUserNickname());
+		String db_userId = memberService.getMemberId(memberVo.getUserId());
+		String db_userNickname = memberService.getMemberNickname(memberVo.getUserNickname());
 		new MemberValidator().validate(memberVo, error);
 		if(db_userId != null)
 			error.rejectValue("userId", "userIdDuplicated");
@@ -137,9 +133,9 @@ public class MemberController {
 		}
 		else { // 이제 해야 할것은 서비스 이용해서  비밀번호 값 일치하는지 체크
 			// dbpassword에는 현재 세션의 아이디값의 패스워드가 들어가있음
-			if(loginService.valueCheckPassword(id, password)) {
+			if(memberService.checkMemberPassword(id, password)) {
 				
-				memberService.update_password(id,newpassword);
+				memberService.updateMemberPassword(id,newpassword);
 				
 				return "redirect:/mypage";
 			}
@@ -163,13 +159,11 @@ public class MemberController {
 	public String delete(HttpServletRequest request, Model model, HttpSession session) {
 		String password = request.getParameter("password");
 		String id = (String) session.getAttribute("userId");
-		String dbpassword;
 		
-		dbpassword = memberService.CheckPasswordMatch(id);
-		
-		if(password.equals(dbpassword)) {
-			memberService.delete(id);
-			
+		if(memberService.checkMemberPassword(id, password)) {
+			memberService.deleteMemberInfo(id);
+			session.removeAttribute("userId");
+			session.removeAttribute("userNickname");
 			return "home";
 		}
 		else {
@@ -183,7 +177,7 @@ public class MemberController {
 	public String check_id_ajax(MemberVO memberVO) {
 		logger.info("check_id_ajax()-POST");
 		String check_id = memberVO.getUserId();
-		return memberService.checkMemberId(check_id);
+		return memberService.getMemberId(check_id);
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, value="/check_nickname_ajax")
@@ -191,7 +185,8 @@ public class MemberController {
 	public String check_nickname_ajax(MemberVO memberVO) {
 		logger.info("check_nickname_ajax()-POST");
 		String check_nickname = memberVO.getUserNickname();
-		return memberService.checkMemberNickname(check_nickname);
+		System.out.println("check_nickname : " + check_nickname);
+		return memberService.getMemberNickname(check_nickname);
 	}
 	
 	
