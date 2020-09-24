@@ -11,6 +11,10 @@
 	<select id="getMemberInfo" resultType="com.bjts.board.domain.member.MemberVO">
 		SELECT * FROM MEMBER WHERE USERID = #{value}
 	</select>
+	
+	<select id="getValueNickname" resultType="String">
+		SELECT USERNICKNAME FROM MEMBER WHERE USERNICKNAME = #{value}
+	</select>
 
 	<insert id="joinMemberInfo">
 		INSERT INTO MEMBER VALUES(MEMBER_ID_SEQ.NEXTVAL,#{userId},#{userPassword},#{userName},#{userNickname},#{userEmail},#{userAddress},#{userGender},SYSDATE)

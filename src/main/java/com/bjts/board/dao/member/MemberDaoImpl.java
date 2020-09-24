@@ -76,6 +76,12 @@ public class MemberDaoImpl implements MemberDao{
 	public void update(MemberVO memberVo) {
 		sqlSession.update(namespace + ".updateMemberInfo", memberVo);
 	}
+
+
+	@Override
+	public String getValueNickname(String userNickname) {
+		return sqlSession.selectOne(namespace + ".getValueNickname", userNickname);
+	}
 	
 	
 }

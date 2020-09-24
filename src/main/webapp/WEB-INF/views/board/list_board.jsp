@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,7 +42,7 @@
 			<td width="500" style="text-align:center" ><a href="/board/list/view?boardNum=${list.idNum}">${list. boardTitle}</a></td>
 			<td>${list. userNickname}</td>
 			<td>${list. boardView}</td>
-			<td>${list. CDate}</td>
+			<td><fmt:formatDate pattern="yyyy/MM/dd" value="${list. CDate}"/></td>
 		</tr>
 		</c:forEach>
 		<tr>

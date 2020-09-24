@@ -30,7 +30,7 @@
 
 		<beans:property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></beans:property>
 
-		<beans:property name="url" value="jdbc:oracle:thin:@192.168.1.2:1521/xepdb1"></beans:property>
+		<beans:property name="url" value="jdbc:oracle:thin:@localhost:1521/xepdb1"></beans:property>
 
 		<beans:property name="username" value="BJTS"></beans:property>
 
@@ -69,5 +69,15 @@
 			<beans:bean class="com.bjts.board.interceptor.AuthenticationInterceptor" />
 		</interceptor>
 	</interceptors>
+	
+	<beans:bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+        <beans:property name="basenames">
+        	<beans:list>
+        		<beans:value>message</beans:value>
+        	</beans:list>
+        </beans:property>
+        <beans:property name="defaultEncoding" value="UTF-8" />
+    </beans:bean>
+	
 	
 </beans:beans>

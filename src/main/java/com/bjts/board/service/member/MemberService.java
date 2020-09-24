@@ -34,4 +34,7 @@ public interface MemberService {
 	void update_password(String id, String newpassword);
 
 	void delete(String id);
+
+
+	String getValueNickname(String userNickname);
 }

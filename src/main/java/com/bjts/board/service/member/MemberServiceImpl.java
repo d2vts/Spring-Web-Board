@@ -56,5 +56,10 @@ public class MemberServiceImpl implements MemberService{
 
 	}
 
+	@Override
+	public String getValueNickname(String userNickname) {
+		return memberDao.getValueNickname(userNickname);
+	}
+
 	
 }
