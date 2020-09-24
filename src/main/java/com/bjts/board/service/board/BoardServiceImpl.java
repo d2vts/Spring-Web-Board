@@ -15,26 +15,7 @@ public class BoardServiceImpl implements BoardService {
 	@Autowired
 	private BoardDao boardDao;
 
-	@Override
-	public List<BoardVO> getBoardInfoAll(HashMap<String, String> map) {
-		return boardDao.getBoardInfoAll(map);
-	}
 
-	@Override
-	public BoardVO getBoardView(int boardNum) {
-		BoardVO boardVO = boardDao.getBoardView(boardNum);
-		return boardVO;
-	}
-
-	@Override
-	public void deleteBoard(int boardNum) {
-		boardDao.deleteBoard(boardNum);
-	}
-
-	@Override
-	public void insertBoard(BoardVO boardVo) {
-		boardDao.insertBoard(boardVo);
-	}
 
 	@Override
 	public BoardVO getBoardInfo(int boardNum) {
@@ -42,20 +23,36 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public void updateBoard(BoardVO boardVo) {
-		boardDao.updateBoard(boardVo);
+	public List<BoardVO> getBoardInfoAll(HashMap<String, String> map) {
+		return boardDao.getBoardInfoAll(map);
 	}
-
+	
 	@Override
 	public int getBoardCount(String field, String query) {
 		return boardDao.getBoardCount(field, query);
 	}
+	
+	@Override
+	public BoardVO getBoardView(int boardNum) {
+		BoardVO boardVO = boardDao.getBoardView(boardNum);
+		return boardVO;
+	}
+	
+	@Override
+	public void insertBoardInfo(BoardVO boardVo) {
+		boardDao.insertBoardInfo(boardVo);
+	}
 
-	/*
-	 * @Override public void updateView(int boardNum) {
-	 * boardDao.updateView(boardNum);
-	 * 
-	 * }
-	 */
+	@Override
+	public void updateBoardInfo(BoardVO boardVo) {
+		boardDao.updateBoardInfo(boardVo);
+	}
+
+	@Override
+	public void deleteBoardInfo(int boardNum) {
+		boardDao.deleteBoardInfo(boardNum);
+	}
+	
+
 
 }

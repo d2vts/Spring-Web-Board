@@ -7,19 +7,18 @@ import com.bjts.board.domain.board.BoardVO;
 
 public interface BoardDao {
 
+	BoardVO getBoardInfo(int boardNum);
+	
 	List<BoardVO> getBoardInfoAll(HashMap<String, String> map);
+	
+	int getBoardCount(String field, String query);
 
 	BoardVO getBoardView(int boardNum);
 
-	void deleteBoard(int boardNum);
-	void insertBoard(BoardVO boardVo);
-
-	BoardVO getBoardInfo(int boardNum);
-
-	void updateBoard(BoardVO boardVo);
-
-	int getBoardCount(String field, String query);
-
-	//void updateView(int boardNum);
-
+	void insertBoardInfo(BoardVO boardVo);
+	
+	void updateBoardInfo(BoardVO boardVo);
+	
+	void deleteBoardInfo(int boardNum);
+	
 }

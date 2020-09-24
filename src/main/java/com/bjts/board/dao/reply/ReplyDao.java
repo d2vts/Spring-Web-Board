@@ -8,10 +8,9 @@ public interface ReplyDao {
 
 	List<ReplyVO> getReplyView(int boardNum);
 
-	void deleteReply(int boardNum);
+	void insertReplyInfo(ReplyVO replyVO);
 
-	void insertReply(ReplyVO replyVO);
-
-	void updateReply(ReplyVO replyVO);
-
+	void updateReplyInfo(ReplyVO replyVO);
+	
+	void deleteReplyInfo(int boardNum);
 }

@@ -20,19 +20,21 @@ public class ReplyServiceImpl implements ReplyService {
 	}
 
 	@Override
-	public void deleteReply(int boardNum) {
-		replyDao.deleteReply(boardNum);
-	}
-	
-	@Override
-	public void insertReply(ReplyVO replyVO) {
-		replyDao.insertReply(replyVO);
+	public void insertReplyInfo(ReplyVO replyVO) {
+		replyDao.insertReplyInfo(replyVO);
 	}
 
 	@Override
-	public void updateReply(ReplyVO replyVO) {
-		replyDao.updateReply(replyVO);
+	public void updateReplyInfo(ReplyVO replyVO) {
+		replyDao.updateReplyInfo(replyVO);
 		
 	}
+	
+	@Override
+	public void deleteReplyInfo(int boardNum) {
+		replyDao.deleteReplyInfo(boardNum);
+	}
+	
+	
 
 }

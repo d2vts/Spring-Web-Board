@@ -5,21 +5,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-
+<title>${board.boardTitle}</title>
 <style type="text/css">
-.modify-reply{display:none}
+.update-reply{display:none}
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
-//var $jstatus = $('#status').val();
-//console.log($jstatus);
-function modify(aa){
-	alert(aa);
-	
-	$('#'+aa).css("display","block");
-}
-//수정버튼을 누르게되면 textarea css를 건드려서 height를 늘려줌 
+function update(aa){	$('#'+aa).css("display","block");}
 </script>
 
 </head>
@@ -42,17 +34,17 @@ function modify(aa){
 		</tr>
 		<tr>
 			<td colspan="2">
-        <a href="/board/list/modify_board?boardNum=${board.idNum}">수정하기</a><a href="/board/list/delete_board?boardNum=${board.idNum}">삭제하기</a>
+        <a href="/board/list/update_board?boardNum=${board.idNum}">수정하기</a><a href="/board/list/delete_board?boardNum=${board.idNum}">삭제하기</a>
 				<a href="/board/list">목록으로</a></td>
 		</tr>
 	
 	</table>
 
 	<form action="view/write_reply" method="POST">
-		<input type="hidden" name="boardNum" value="${board.idNum}">
+		<input type="hidden" name="re_boardId" value="${board.idNum}">
 		<table>
 			<tr>
-				<td><input type="text" name="re_content"></td>
+				<td><textarea name="re_content"></textarea></td>
 				<td><input type="submit" value="등록"></td>
 			</tr>
 		</table>
@@ -67,13 +59,13 @@ function modify(aa){
 			<c:if test="${reply.re_userNickname.equals(userNickname)}">
 			<tr>
 				<td colspan="2">
-				<form class="modify-reply" id="${reply.re_idNum}" action="/board/list/write_reply" method="post">
+				<form class="update-reply" id="${reply.re_idNum}" action="/board/list/update_reply" method="post">
 				<input type="hidden" name ="re_idNum" value="${reply.re_idNum}">
 				<input type="hidden" name ="re_boardId" value="${board.idNum}">
 				<textarea name="re_content">${reply.re_content}</textarea>
 				<input type="submit" value="수정확인">
 				</form><br/>
-				<button id="modify_btn" onclick="modify(${reply.re_idNum})">수정하기</button>
+				<button id="update_btn" onclick="update(${reply.re_idNum})">수정하기</button>
 				<button><a href="/board/list/delete_reply?replyNum=${reply.re_idNum}&boardNum=${board.idNum}">삭제하기</a></button>
 				</td>
 			</tr>

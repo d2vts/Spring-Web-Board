@@ -9,16 +9,16 @@
 		SELECT * FROM REPLY WHERE RE_BOARDID = #{value} ORDER BY RE_CDATE DESC
 	</select>
 
-	<delete id="deleteReply">
-		DELETE FROM REPLY WHERE RE_IDNUM = #{value}
-	</delete>
-
-	<insert id="insertReply">
+	<insert id="insertReplyInfo">
 		INSERT INTO REPLY VALUES(REPLY_ID_SEQ.NEXTVAL, #{re_boardId}, #{re_userId},
 		#{re_userNickname}, #{re_content}, SYSDATE)
 	</insert>
 		
-	<update id="updateReply">
+	<update id="updateReplyInfo">
 		UPDATE REPLY SET RE_CONTENT=#{re_content} WHERE RE_IDNUM=#{re_idNum}
 	</update>
+	
+	<delete id="deleteReplyInfo">
+		DELETE FROM REPLY WHERE RE_IDNUM = #{value}
+	</delete>
 </mapper> 

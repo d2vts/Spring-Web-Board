@@ -5,6 +5,10 @@
 
 <mapper namespace="com.bjts.board.dao.board.BoardDao">
 
+	<select id="getBoardInfo" resultType="com.bjts.board.domain.board.BoardVO">
+		SELECT * FROM BOARD WHERE IDNUM = #{value}
+	</select>
+
 	<select id="getBoardInfoAll" parameterType="hashmap"
 		resultType="com.bjts.board.domain.board.BoardVO">
 		SELECT * FROM ( SELECT ROWNUM NUM, N.* FROM (SELECT * FROM BOARD WHERE ${field} LIKE '%' ||  #{query} || '%' ORDER BY CDATE DESC) N) WHERE NUM BETWEEN ${startNum} AND ${lastNum}
@@ -15,39 +19,35 @@
 		SELECT * FROM ( SELECT ROWNUM NUM, N.* FROM (SELECT * FROM BOARD WHERE ${userNickname} LIKE '%' ||  #{query} || '%' OR ${boardTitle} LIKE '%' ||  #{query} || '%' ORDER BY CDATE DESC) N) WHERE NUM BETWEEN ${startNum} AND ${lastNum}
 	</select>
 
+	<select id="getBoardCountTitleNick" parameterType="hashmap" resultType="int">
+		SELECT COUNT(IDNUM) COUNT FROM (SELECT ROWNUM NUM, N.* FROM (SELECT * FROM BOARD WHERE ${userNickname} LIKE '%' ||  #{query} || '%' OR ${boardTitle} LIKE '%' ||  #{query} || '%' ORDER BY CDATE DESC) N)
+	</select>
+
+	<select id="getBoardCount" parameterType="hashmap" resultType="int">
+		SELECT COUNT(IDNUM) COUNT FROM (SELECT ROWNUM NUM, N.* FROM (SELECT * FROM BOARD WHERE ${field} LIKE '%' ||  #{query} || '%' ORDER BY CDATE DESC) N)
+	</select>
+
 	<select id="getBoardView"
 		resultType="com.bjts.board.domain.board.BoardVO">
 		SELECT * FROM BOARD WHERE idNum=#{value}
 	</select>
 	
-	<select id="getBoardCount" parameterType="hashmap" resultType="int">
-		SELECT COUNT(IDNUM) COUNT FROM (SELECT ROWNUM NUM, N.* FROM (SELECT * FROM BOARD WHERE ${field} LIKE '%' ||  #{query} || '%' ORDER BY CDATE DESC) N)
-	</select>
-	
-	<select id="getBoardCountTitleNick" parameterType="hashmap" resultType="int">
-		SELECT COUNT(IDNUM) COUNT FROM (SELECT ROWNUM NUM, N.* FROM (SELECT * FROM BOARD WHERE ${userNickname} LIKE '%' ||  #{query} || '%' OR ${boardTitle} LIKE '%' ||  #{query} || '%' ORDER BY CDATE DESC) N)
-	</select>
-
-	<delete id="deleteBoard">
-		DELETE FROM BOARD WHERE idNum=#{value}
-	</delete>
-	
-	<select id="getBoardInfo" resultType="com.bjts.board.domain.board.BoardVO">
-		SELECT * FROM BOARD WHERE IDNUM = #{value}
-	</select>
-
-	<insert id="insertBoard">
+	<insert id="insertBoardInfo">
 		INSERT INTO BOARD
 		VALUES(BOARD_ID_SEQ.NEXTVAL,#{userId},#{userNickname},#{boardTitle},#{boardContent},#{boardView},SYSDATE)
 	</insert>
-
-	<update id="updateBoard">
+	
+	<update id="updateBoardInfo">
 		UPDATE BOARD SET BOARDTITLE = #{boardTitle},
 		BOARDCONTENT = #{boardContent} WHERE IDNUM = #{idNum}
 	</update>
-	
+
 	<update id="updateView">
 		UPDATE BOARD SET BOARDVIEW= BOARDVIEW+1 WHERE IDNUM=#{boardNum}
 	</update>
+
+	<delete id="deleteBoardInfo">
+		DELETE FROM BOARD WHERE idNum=#{value}
+	</delete>
 
 </mapper> 
