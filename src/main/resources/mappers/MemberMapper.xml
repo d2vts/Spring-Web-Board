@@ -32,5 +32,12 @@
 		DELETE FROM MEMBER WHERE USERID=#{value}
 	</delete>
 
+	<select id="checkMemberId" resultType="String">
+		SELECT USERID FROM MEMBER WHERE USERID=#{check_id}
+	</select>
+
+	<select id="checkMemberNickname" resultType="String">
+		SELECT USERNICKNAME FROM MEMBER WHERE USERID=#{check_nickname}
+	</select>
 
 </mapper> 

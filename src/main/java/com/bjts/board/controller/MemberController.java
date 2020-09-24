@@ -10,8 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bjts.board.domain.member.MemberVO;
 import com.bjts.board.service.login.LoginService;
@@ -174,7 +176,24 @@ public class MemberController {
 			model.addAttribute("value_status", "notMatch");
 			return "redirect:delete_member";
 		}
-		
 	}
+	
+	@RequestMapping(method = RequestMethod.POST, value="/check_id_ajax")
+	@ResponseBody
+	public String check_id_ajax(MemberVO memberVO) {
+		logger.info("check_id_ajax()-POST");
+		String check_id = memberVO.getUserId();
+		return memberService.checkMemberId(check_id);
+	}
+	
+	@RequestMapping(method = RequestMethod.POST, value="/check_nickname_ajax")
+	@ResponseBody
+	public String check_nickname_ajax(MemberVO memberVO) {
+		logger.info("check_nickname_ajax()-POST");
+		String check_nickname = memberVO.getUserNickname();
+		return memberService.checkMemberNickname(check_nickname);
+	}
+	
+	
 	
 }
