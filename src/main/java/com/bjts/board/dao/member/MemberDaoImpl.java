@@ -79,7 +79,12 @@ public class MemberDaoImpl implements MemberDao{
 
 
 	@Override
-	public String checkMemberId(String check_id) {
+	public String getValueNickname(String userNickname) {
+		return sqlSession.selectOne(namespace + ".getValueNickname", userNickname);
+  }
+  
+  @Override
+    public String checkMemberId(String check_id) {
 		return sqlSession.selectOne(namespace + ".checkMemberId",check_id);
 	}
 

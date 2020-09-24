@@ -34,7 +34,9 @@ public interface MemberService {
 
 	void delete(String id);
 
+	String getValueNickname(String userNickname);
+  
 	String checkMemberId(String check_id);
-	
+  
 	String checkMemberNickname(String check_nickname);
 }

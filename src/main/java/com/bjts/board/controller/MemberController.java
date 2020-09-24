@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.bjts.board.domain.member.MemberVO;
 import com.bjts.board.service.login.LoginService;
 import com.bjts.board.service.member.MemberService;
+import com.bjts.board.validator.MemberValidator;
 
 @Controller
 public class MemberController {
@@ -98,10 +100,22 @@ public class MemberController {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, value="/sign_up")
-	public String sign_up(@Valid MemberVO memberVo, HttpServletRequest request, Model model) {
+	public String sign_up(@Valid MemberVO memberVo, Model model, Errors error){
 		logger.info("sign_up()-POST");
+		String db_userId = loginService.valueCheckId(memberVo.getUserId());
+		String db_userNickname = memberService.getValueNickname(memberVo.getUserNickname());
+		new MemberValidator().validate(memberVo, error);
+		if(db_userId != null)
+			error.rejectValue("userId", "userIdDuplicated");
+		if(db_userNickname != null)
+			error.rejectValue("userNickname", "userNicknameDuplicated");
+		if(error.hasErrors()) {
+			model.addAttribute("memberVo", memberVo);
+			return "member/sign_up";
+		}
 		memberService.joinMemberInfo(memberVo);
 		return "redirect:/";
+		
 	}
 	
 	@RequestMapping("/mypage/change_password")

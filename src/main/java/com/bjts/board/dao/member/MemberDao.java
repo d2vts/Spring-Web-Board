@@ -11,6 +11,7 @@ public interface MemberDao {
 	public void delete(String id);
 	public MemberVO getMemberInfo(String id);
 	public void update(MemberVO memberVo);
+	public String getValueNickname(String userNickname);
 	public String checkMemberId(String check_id);
 	public String checkMemberNickname(String check_nickname);
 }
