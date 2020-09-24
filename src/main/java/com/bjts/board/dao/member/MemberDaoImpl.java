@@ -1,38 +1,20 @@
 package com.bjts.board.dao.member;
 
-import javax.sql.DataSource;
-
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.bjts.board.domain.member.MemberVO;
 
 @Repository
 public class MemberDaoImpl implements MemberDao{
-
-	DataSource dataSource;
 	
 	@Autowired
 	private SqlSession sqlSession;
 	
 	private static final String namespace="com.bjts.board.dao.member.MemberDao";
 
-	JdbcTemplate template;
-
 	private MemberVO memberVO;
-	
-	@Autowired
-	public void setTemplate(JdbcTemplate template) {
-		this.template = template;
-	}
-	
-	
-	public MemberDaoImpl() {
-	}
-	
-	
 	
 	@Override
 	public void joinMemberInfo(MemberVO memberVo){
@@ -43,8 +25,8 @@ public class MemberDaoImpl implements MemberDao{
 
 	@Override
 
-	public String CheckPasswordMatch(String id) {
-		return sqlSession.selectOne(namespace + ".CheckPasswordMatch", id);
+	public String getMemberPassword(String id) {
+		return sqlSession.selectOne(namespace + ".getMemberPassword", id);
   }
   
   @Override
@@ -54,7 +36,7 @@ public class MemberDaoImpl implements MemberDao{
 
 
 	@Override
-	public void update_password(String id, String newpassword) {
+	public void updateMemberPassword(String id, String newpassword) {
 		
 		memberVO = new MemberVO();
 		memberVO.setUserId(id);
@@ -65,33 +47,38 @@ public class MemberDaoImpl implements MemberDao{
 
 
 	@Override
-	public void delete(String id) {
+	public void deleteMemberInfo(String id) {
 		
 		sqlSession.delete(namespace + ".deleteMemberInfo", id);
 		
 	}
 	
-	
 	@Override
-	public void update(MemberVO memberVo) {
+	public void updateMemberInfo(MemberVO memberVo) {
 		sqlSession.update(namespace + ".updateMemberInfo", memberVo);
 	}
-
-
-	@Override
-	public String getValueNickname(String userNickname) {
-		return sqlSession.selectOne(namespace + ".getValueNickname", userNickname);
-  }
   
-  @Override
-    public String checkMemberId(String check_id) {
-		return sqlSession.selectOne(namespace + ".checkMemberId",check_id);
+	@Override
+    public String getMemberId(String check_id) {
+		return sqlSession.selectOne(namespace + ".getMemberId",check_id);
 	}
 
 
 	@Override
-	public String checkMemberNickname(String check_nickname) {
-		return sqlSession.selectOne(namespace + ".checkMemberNickname",check_nickname);
+	public String getMemberNickname(String check_nickname) {
+		return sqlSession.selectOne(namespace + ".getMemberNickname",check_nickname);
+	}
+
+
+	@Override
+	public String checkMemberPassword(String id) {
+		return sqlSession.selectOne(namespace + ".checkMemberPassword", id);
+	}
+
+
+	@Override
+	public String getMemberNicknameById(String id) {
+		return sqlSession.selectOne(namespace + ".getMemberNicknameById", id);
 	}
 	
 	

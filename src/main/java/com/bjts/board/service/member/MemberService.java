@@ -4,39 +4,23 @@ import com.bjts.board.domain.member.MemberVO;
 
 public interface MemberService {
 	
-	// 회원가입 아이디 중복 체크
-//	String checkIdRegisterd(String userId);
-	// 회원가입 아이디 형식 체크
-//	String checkIdForm(String userId);
-	// 회원가입 비밀번호 형식 체크
-//	String checkPassword(String userPassword);
-	/*
-	 * 한글 이름 2~4자 이내 var reg = /^[가-힣]{2,4}$/;
-	 * 영문 이름 2~10자 이내 : 띄어쓰기(\s)가 들어가며 First, Last Name 형식 var reg =
-	 * /^[a-zA-Z]{2,10}\s[a-zA-Z]{2,10}$/;
-	 */
-	// 회원가입 이름 형식 체크
-//	String checkNameForm(String userName);
-	// 회원가입 닉네임 중복 체크
-//	String checkNicknameRegistered(String userNickname);
-	// 회원가입 이메일 형식 체크
-//	String checkEmailForm(String userEmail);
-	// Address와 Gender는 형식과 중복체크 X
 	void joinMemberInfo(MemberVO memberVo);
 
-	String CheckPasswordMatch(String id);
+	String getMemberPassword(String id);
 
 	MemberVO getMemberInfo(String id);
 
-	void update(MemberVO memberVo);
+	void updateMemberInfo(MemberVO memberVo);
 	
-	void update_password(String id, String newpassword);
+	void updateMemberPassword(String id, String newpassword);
 
-	void delete(String id);
+	void deleteMemberInfo(String id);
+  
+	String getMemberId(String get_id);
+  
+	String getMemberNickname(String get_nickname);
+	
+	Boolean checkMemberPassword(String id, String password);
 
-	String getValueNickname(String userNickname);
-  
-	String checkMemberId(String check_id);
-  
-	String checkMemberNickname(String check_nickname);
+	String getMemberNicknameById(String id);
 }

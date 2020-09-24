@@ -25,24 +25,21 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 
-	public String CheckPasswordMatch(String id) {
-		
-		String dbpassword = memberDao.CheckPasswordMatch(id);
-		
-		return dbpassword;
+	public String getMemberPassword(String id) {
+		return memberDao.getMemberPassword(id);
 	}
 
 	@Override
-	public void update_password(String id, String newpassword) {
+	public void updateMemberPassword(String id, String newpassword) {
 		String encodePass = passwordEncoder.encode(newpassword);
-		memberDao.update_password(id, encodePass);
+		memberDao.updateMemberPassword(id, encodePass);
 		
 	}
 
 	@Override
-	public void delete(String id) {
+	public void deleteMemberInfo(String id) {
 		
-		memberDao.delete(id);
+		memberDao.deleteMemberInfo(id);
 	}
 
     @Override
@@ -51,23 +48,30 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public void update(MemberVO memberVo) {
-		memberDao.update(memberVo);
+	public void updateMemberInfo(MemberVO memberVo) {
+		memberDao.updateMemberInfo(memberVo);
 
 	}
 
 	@Override
-	public String getValueNickname(String userNickname) {
-		return memberDao.getValueNickname(userNickname);
-  }
-  @Override
-	public String checkMemberId(String check_id) {
-		return memberDao.checkMemberId(check_id);
+	public String getMemberId(String get_id) {
+		return memberDao.getMemberId(get_id);
 	}
 
 	@Override
-	public String checkMemberNickname(String check_nickname) {
-		return memberDao.checkMemberNickname(check_nickname);
+	public String getMemberNickname(String get_nickname) {
+		return memberDao.getMemberNickname(get_nickname);
+	}
+	
+	@Override
+	public Boolean checkMemberPassword(String id, String password) {
+		String encodePass = memberDao.checkMemberPassword(id);
+		return passwordEncoder.matches(password, encodePass);
+	}
+
+	@Override
+	public String getMemberNicknameById(String id) {
+		return memberDao.getMemberNicknameById(id);
 	}
 	
 }

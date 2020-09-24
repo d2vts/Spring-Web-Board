@@ -6,12 +6,13 @@ public interface MemberDao {
 
 	
 	public void joinMemberInfo(MemberVO memberVo);
-	public String CheckPasswordMatch(String id);
-	public void update_password(String id, String newpassword);
-	public void delete(String id);
+	public String getMemberPassword(String id);
+	public void updateMemberPassword(String id, String newpassword);
+	public void deleteMemberInfo(String id);
 	public MemberVO getMemberInfo(String id);
-	public void update(MemberVO memberVo);
-	public String getValueNickname(String userNickname);
-	public String checkMemberId(String check_id);
-	public String checkMemberNickname(String check_nickname);
+	public void updateMemberInfo(MemberVO memberVo);
+	public String getMemberId(String check_id);
+	public String getMemberNickname(String check_nickname);
+	public String checkMemberPassword(String id);
+	public String getMemberNicknameById(String id);
 }
