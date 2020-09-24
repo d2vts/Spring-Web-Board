@@ -10,12 +10,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bjts.board.domain.member.MemberVO;
 import com.bjts.board.service.member.MemberService;
+import com.bjts.board.validator.MemberUpdateValidator;
 import com.bjts.board.validator.MemberValidator;
 
 @Controller
@@ -78,18 +80,26 @@ public class MemberController {
 	}
   
 	@RequestMapping("mypage/modify_member")
-	public String modify_member(MemberVO memberVo, HttpSession session, Model model) {
+	public String modify_member(@ModelAttribute MemberVO memberVo, HttpSession session, Model model) {
 		logger.info("modify_member()-GET");
 		String session_id = (String) session.getAttribute("userId");
 		memberVo = memberService.getMemberInfo(session_id);
-		System.out.println(memberVo.getUserName() + " / " + memberVo.getCDate());
-		model.addAttribute("member", memberVo);
+		model.addAttribute("memberVo", memberVo);
 		return "member/modify_member";
 	}
 	
 	@RequestMapping(value="mypage/modify_member", method = RequestMethod.POST)
-	public String modify(MemberVO memberVo, HttpServletRequest request, HttpSession session, Model model) {
+	public String modify(@Valid MemberVO memberVo, HttpServletRequest request, HttpSession session, Model model, Errors error) {
 		logger.info("modify()-POST");
+		String db_userNickname = memberService.getMemberNickname(memberVo.getUserNickname());
+		new MemberUpdateValidator().validate(memberVo, error);
+		if(db_userNickname != null)
+			error.rejectValue("userNickname", "userNicknameDuplicated");
+		if(error.hasErrors()) {
+			model.addAttribute("memberVo", memberVo);
+			return "member/modify_member";
+		}
+		System.out.println(memberVo.toString());
 		memberService.updateMemberInfo(memberVo);
 		session.setAttribute("userNickname", request.getParameter("userNickname"));
 		return "redirect:/mypage";
