@@ -9,9 +9,9 @@
 <body>
 	<h1>게시글 수정</h1>
 
-	<form action="modify_board" method="post">
+	<form action="update_board" method="post">
 	    <table>
-	    	<input type="hidden" name="boardNum" value="${board.idNum }">
+	    	<input type="hidden" name="idNum" value="${board.idNum }">
     		<tr>
 	            <td>제목 : <input type="text" name="boardTitle" value="${board.boardTitle }"></td>
 	        </tr>

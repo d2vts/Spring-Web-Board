@@ -8,10 +8,10 @@ public interface ReplyService {
 
 	List<ReplyVO> getReplyView(int boardNum);
 
-	void deleteReply(int boardNum);
-
-	void insertReply(ReplyVO replyVO);
-
-	void updateReply(ReplyVO replyVO);
+	void insertReplyInfo(ReplyVO replyVO);
+	
+	void updateReplyInfo(ReplyVO replyVO);
+	
+	void deleteReplyInfo(int boardNum);
 
 }

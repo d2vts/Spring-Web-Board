@@ -19,21 +19,19 @@ public class ReplyDaoImpl implements ReplyDao {
 	public List<ReplyVO> getReplyView(int boardNum) {
 		return sqlSession.selectList(namespace + ".getReplyView", boardNum);
 	}
-
-	@Override
-	public void deleteReply(int boardNum) {
-		sqlSession.selectList(namespace + ".deleteReply", boardNum);
-  }
   
   @Override
-	public void insertReply(ReplyVO replyVO) {
-		sqlSession.insert(namespace + ".insertReply", replyVO);
+	public void insertReplyInfo(ReplyVO replyVO) {
+		sqlSession.insert(namespace + ".insertReplyInfo", replyVO);
 	}
 
   @Override
-  	public void updateReply(ReplyVO replyVO) {
-		sqlSession.update(namespace + ".updateReply",replyVO);
-	
+  	public void updateReplyInfo(ReplyVO replyVO) {
+		sqlSession.update(namespace + ".updateReplyInfo",replyVO);
 }
-
+  
+@Override
+	public void deleteReplyInfo(int boardNum) {
+		sqlSession.selectList(namespace + ".deleteReplyInfo", boardNum);
+  }
 }

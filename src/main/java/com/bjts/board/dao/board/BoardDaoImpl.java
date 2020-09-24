@@ -18,7 +18,11 @@ public class BoardDaoImpl implements BoardDao {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	//getBoardInfo() 수정
+	@Override
+	public BoardVO getBoardInfo(int boardNum) {
+		return sqlSession.selectOne(namespace + ".getBoardInfo", boardNum);
+	}
+	
 	@Override
 	public List<BoardVO> getBoardInfoAll(HashMap<String, String> map) {
 		String field = map.get("field");
@@ -31,33 +35,6 @@ public class BoardDaoImpl implements BoardDao {
 			map.put("boardTitle", "boardTitle");
 			return sqlSession.selectList(namespace + ".getBoardInfoTitleNick", map);
 		}
-	}
-
-	@Override
-	@Transactional
-	public BoardVO getBoardView(int boardNum) {
-		sqlSession.update(namespace + ".updateView",boardNum);
-		return sqlSession.selectOne(namespace + ".getBoardView", boardNum);
-	}
-
-	@Override
-	public void deleteBoard(int boardNum) {
-		sqlSession.delete(namespace + ".deleteBoard", boardNum);
-  }
-	@Override
-	public void insertBoard(BoardVO boardVo) {
-		sqlSession.insert(namespace + ".insertBoard", boardVo);
-	}
-	//getBoardInfo() 수정
-
-	@Override
-	public BoardVO getBoardInfo(int boardNum) {
-		return sqlSession.selectOne(namespace + ".getBoardInfo", boardNum);
-	}
-
-	@Override
-	public void updateBoard(BoardVO boardVo) {
-		sqlSession.update(namespace + ".updateBoard", boardVo);
 	}
 
 	@Override
@@ -75,12 +52,27 @@ public class BoardDaoImpl implements BoardDao {
 			return sqlSession.selectOne(namespace + ".getBoardCountTitleNick", map);
 		}
 	}
+	
+	@Override
+	@Transactional
+	public BoardVO getBoardView(int boardNum) {
+		sqlSession.update(namespace + ".updateView",boardNum);
+		return sqlSession.selectOne(namespace + ".getBoardView", boardNum);
+	}
 
-	/*
-	 * @Override public void updateView(int boardNum) {
-	 * sqlSession.update(namespace + ".updateView",boardNum);
-	 * 
-	 * }
-	 */
+	@Override
+	public void insertBoardInfo(BoardVO boardVo) {
+		sqlSession.insert(namespace + ".insertBoardInfo", boardVo);
+	}
+
+	@Override
+	public void updateBoardInfo(BoardVO boardVo) {
+		sqlSession.update(namespace + ".updateBoardInfo", boardVo);
+	}
+	
+	@Override
+	public void deleteBoardInfo(int boardNum) {
+		sqlSession.delete(namespace + ".deleteBoardInfo", boardNum);
+  }
 
 }
