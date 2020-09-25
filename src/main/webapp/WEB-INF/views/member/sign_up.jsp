@@ -39,14 +39,18 @@
 		<p id="sign-check-info-email">&nbsp;</p>
 		<form:errors path="userEmail" cssStyle="color:red;" />
 		<br />
-주소 : <input type="text" name="userAddress" id="userAddress" value="${memberVo.userAddress }">
-		<p id="sign-check-info-addr">&nbsp;</p>
-		<form:errors path="userAddress" cssStyle="color:red;" />
-		<br />
-성별 : <input type="text" name="userGender" id="userGender" value="${memberVo.userGender }">
+주소 :  <select id="userAddress" name="userAddress">
+            <option value="서울특별시" selected>서울특별시</option>
+            <option value="대구광역시">대구광역시</option>
+            <option value="부산광역시">부산광역시</option>
+      </select>
+	   <p id="sign-check-info-addr">&nbsp;</p>
+	   <br />
+성별 : <input type="radio" name="userGender" id="userGender" value="남"checked>남
+	 <input type="radio" name="userGender" id="userGender" value="여">여
 		<p id="sign-check-info-gender">&nbsp;</p>
 		<br />
-		<input type="submit" value="전송">
+	  <input type="submit" value="전송">
 	</form:form>
 
 </body>
