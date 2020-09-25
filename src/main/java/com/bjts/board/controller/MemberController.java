@@ -1,5 +1,7 @@
 package com.bjts.board.controller;
 
+import java.awt.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -121,7 +123,6 @@ public class MemberController {
 		}
 		memberService.joinMemberInfo(memberVo);
 		return "redirect:/";
-		
 	}
 	
 	@RequestMapping("/mypage/change_password")
@@ -197,6 +198,7 @@ public class MemberController {
 		String check_nickname = memberVO.getUserNickname();
 		System.out.println("check_nickname : " + check_nickname);
 		return memberService.getMemberNickname(check_nickname);
+			
 	}
 	
 	
