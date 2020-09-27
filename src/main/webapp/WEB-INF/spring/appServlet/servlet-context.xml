@@ -18,6 +18,7 @@
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 		<resources mapping="/css/**" location="/resources/css/" />
 		<resources mapping="/js/**" location="/resources/js/" />
+		<resources mapping="/images/**" location="/resources/images/" />
 		<resources mapping="/resources/**" location="/resources/" />
 		<resources mapping="/images/**" location="/resources/images/" />
 
@@ -35,7 +36,7 @@
 
 		<beans:property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></beans:property>
 
-		<beans:property name="url" value="jdbc:oracle:thin:@localhost:1521/xepdb1"></beans:property>
+		<beans:property name="url" value="jdbc:oracle:thin:@192.168.1.2:1521/xepdb1"></beans:property>
 
 		<beans:property name="username" value="BJTS"></beans:property>
 

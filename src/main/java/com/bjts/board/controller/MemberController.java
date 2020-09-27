@@ -1,5 +1,8 @@
 package com.bjts.board.controller;
 
+import java.awt.List;
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;

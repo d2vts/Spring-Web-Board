@@ -32,10 +32,6 @@
 		INSERT INTO MEMBER VALUES(MEMBER_ID_SEQ.NEXTVAL,#{userId},#{userPassword},#{userName},#{userNickname},#{userEmail},#{userAddress},#{userGender},SYSDATE)
 	</insert>
 	
-	<update id="updateMemberInfo" parameterType="com.bjts.board.domain.member.MemberVO">
-		UPDATE MEMBER SET USERNICKNAME = #{userNickname}, USEREMAIL = #{userEmail}, USERADDRESS = #{userAddress} WHERE USERID=#{userId}
-	</update>
-	
 	<update id="updateMemberPassword">
 		UPDATE MEMBER SET USERPASSWORD= #{userPassword} WHERE USERID=#{userId}
 	</update>
@@ -43,5 +39,10 @@
 	<delete id="deleteMemberInfo">
 		DELETE FROM MEMBER WHERE USERID=#{value}
 	</delete>
+	
+	<update id="updateMemberInfo">
+		UPDATE MEMBER SET USERNICKNAME = #{userNickname}, USEREMAIL = #{userEmail}, USERADDRESS = #{userAddress} WHERE userId = #{userId}
+		</update>
+	
 
 </mapper> 
