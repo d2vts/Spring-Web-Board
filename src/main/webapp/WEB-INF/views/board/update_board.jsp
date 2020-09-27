@@ -25,7 +25,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-	<h1>게시글 수정</h1>
+	<h1>&nbsp;</h1>
     
     <form action="update_board" method="POST" class="write-form">
     <input type="hidden" name="idNum" value="${board.idNum }">

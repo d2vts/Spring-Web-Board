@@ -19,16 +19,8 @@ body::before{
 .select-div{
 	padding-left:20px;
 }
-#userAddress{
-	background-color:rgba(76, 175, 80, 0.1);
-	color:white;
-	width: 200px;
-}
 .select-option{
 	background:gray;
-}
-#userGender{
-	margin:0 20px;
 }
 .login-box{
   width: 280px;
@@ -78,4 +70,14 @@ body::before{
   font-size: 18px;
   cursor: pointer;
   margin: 12px 0 0 0;
+}
+
+
+#userAddress{
+	background-color:rgba(76, 175, 80, 0.1);
+	color:white;
+	width: 200px;
+}
+#userGender{
+	margin:0 20px;
 }

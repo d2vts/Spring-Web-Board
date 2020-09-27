@@ -15,9 +15,10 @@
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="css/list.css">
+<link rel="stylesheet" href="css/member.css">
 </head>
 <body>
-	<div id="h1-div"><h1 style="text-align:center; color:white;" >자유 게시판</h1></div>
+	<div id="h1-div" class="login-box"><h1>자유 게시판</h1></div>
 	<c:set var="startNum" value="${page-(page-1)%5}" />
 	<c:set var="lastNum" value="${fn:substringBefore(Math.ceil(count/10), '.') }" />
 	<div class="col-md-10 col-md-offset-1" id="list-table">
@@ -105,7 +106,6 @@
                 </div>
               </div>
             </div>
-	
 
 </body>
 </html>
