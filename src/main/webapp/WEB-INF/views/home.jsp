@@ -11,14 +11,14 @@
 
 <h1> Home </h1>
 
-<button><a href="mypage">마이페이지</a></button>
 <c:if test="${userId == null}">
-	<button><a href="login">로그인</a></button>
+	<button onclick="location.href='login' ">로그인</button>
 </c:if>
 <c:if test="${userId != null}">
-	<button><a href="logout">로그아웃</a></button>
+	<button onclick="location.href='mypage' ">마이페이지</button>
+	<button onclick="location.href='logout' ">로그아웃</button>
 </c:if>
-<button><a href="sign_up">회원가입</a></button>
-<button><a href="list">게시판</a></button>
+<button onclick="location.href='sign_up' ">회원가입</button>
+<button onclick="location.href='list' ">게시판</button>
 </body>
 </html>

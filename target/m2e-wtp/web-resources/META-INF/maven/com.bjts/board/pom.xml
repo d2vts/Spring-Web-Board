@@ -174,7 +174,7 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-tx</artifactId>
-			<version>${org.springframework-version}</version>
+			<version>4.2.7.RELEASE</version>
 		</dependency>
 		
 		<dependency>

@@ -32,8 +32,8 @@
 		INSERT INTO MEMBER VALUES(MEMBER_ID_SEQ.NEXTVAL,#{userId},#{userPassword},#{userName},#{userNickname},#{userEmail},#{userAddress},#{userGender},SYSDATE)
 	</insert>
 	
-	<update id="updateMemberInfo">
-		UPDATE MEMBER SET USERNICKNAME = #{userNickname}, USEREMAIL = #{userEmail}, USERADDRESS = #{userAddress} WHERE USERID = #{userId}
+	<update id="updateMemberInfo" parameterType="com.bjts.board.domain.member.MemberVO">
+		UPDATE MEMBER SET USERNICKNAME = #{userNickname}, USEREMAIL = #{userEmail}, USERADDRESS = #{userAddress} WHERE USERID=#{userId}
 	</update>
 	
 	<update id="updateMemberPassword">
