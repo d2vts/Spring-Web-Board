@@ -128,7 +128,7 @@ function undo(mod_reply){
 							<input type="hidden" name="re_idNum" value="${reply.re_idNum}">
 							<input type="hidden" name="re_boardId" value="${board.idNum}">
 							<textarea class="form-control" name="re_content"
-								name="re_content" rows="2">${reply.re_content}</textarea>
+								name="re_content" rows="2" maxlength="200">${reply.re_content}</textarea>
 							<input type="submit" class="btn btn-lg btn-block submit-btn"
 								id="reg-reply" value="수정확인">
 						</form> <br />

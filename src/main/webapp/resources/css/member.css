@@ -79,3 +79,29 @@ body::before{
   cursor: pointer;
   margin: 12px 0 0 0;
 }
+/* home.css */
+a{text-decoration: none; color: white;}
+
+.container{
+    max-width: 1200px; margin: 0 auto;
+    position: relative;}
+header{
+    position: fixed; z-index:99;
+    top:0; left:0; right:0;
+    padding: 25px;
+}
+header h1{
+    font-size: 50x; color:#fff;
+}
+
+header nav{
+    position: absolute; z-index: 2;
+    top: 0; right: 0;
+    font-size:24px;
+}
+
+header nav a{
+    font-size: 16px; color: #fff;
+    display: inline-block; vertical-align: middle;
+    padding: 5px; margin: 0 10px;
+}

@@ -33,7 +33,7 @@
 								<option ${(param.field == "userNickname")?"selected":"" } value="userNickname" id="select-option">작성자</option>
 								<option ${(param.field == "titleNick")?"selected":"" } value="titleNick" id="select-option">제목+작성자</option>
 							</select> 
-							<input type="text" name="query" value="${param.query}" class="noboot-search-input" placeholder="&nbsp;&nbsp;검색"/>
+							<input type="text" name="query" value="${param.query}" maxlength="10" class="noboot-search-input" placeholder="&nbsp;&nbsp;검색"/>
 							<!-- <input type="submit" value="검색" /> -->
 							<button class="btn btn-sm btn-success btn-create" id="search-btn">검색</button>
 						</fieldset>
@@ -48,10 +48,10 @@
                 <table class="table table-bordered table-list">
                   <thead>
                     <tr>
-                        <th>번호</th>
+                        <th style="min-width:50px;">번호</th>
                         <th>제목</th>
                         <th>작성자</th>
-						<th>조회수</th>
+						<th style="min-width:60px;">조회수</th>
 						<th>작성일자</th>
                     </tr> 
                   </thead>

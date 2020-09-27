@@ -31,11 +31,11 @@
     <input type="hidden" name="idNum" value="${board.idNum }">
 		<div class="form-group">
 		<p class="title-content">제목</p>
-			<input type="text" name="boardTitle" class="form-control"
+			<input type="text" name="boardTitle" class="form-control" maxlength="50"
 				id="exampleFormControlInput1" value="${board.boardTitle }">
 		<br>
 		<p class="title-content">내용</p>
-			<textarea class="form-control" name="boardContent" rows="10">${board.boardContent }</textarea>
+			<textarea class="form-control" name="boardContent" rows="10" maxlength="2000">${board.boardContent }</textarea>
 			<br><br>
 			<input type="submit" class="btn btn-lg btn-block submit-btn" id="write-submit" value="수정 완료">
 		</div>

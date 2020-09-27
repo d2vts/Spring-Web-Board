@@ -13,11 +13,11 @@
 		<form action="login" method="post">
 			<div class="textbox">
 				<i class="fas fa-user"></i>
-				<input type="text" name="id" placeholder="UserId" autocomplete="off">
+				<input type="text" name="id" placeholder="UserId" autocomplete="off" maxlength="50">
 			</div>
 			<div class="textbox">
 				<i class="fas fa-lock"></i>
-				<input type="password" name="password" placeholder="Password">
+				<input type="password" name="password" placeholder="Password" maxlength="20">
 			</div>
 			<input type="submit" class="submit-btn" value="로 그 인">
 		</form>
