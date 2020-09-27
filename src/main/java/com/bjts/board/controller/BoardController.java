@@ -97,6 +97,8 @@ public class BoardController {
 		String session_nic = (String) session.getAttribute("userNickname");
 		List<ReplyVO> replylist = new ArrayList<ReplyVO>();
 		BoardVO boardVO = boardService.getBoardView(boardNum);
+		boardVO.setBoardContent(boardVO.getBoardContent().replaceAll("<", "&lt;").replaceAll(">", "&gt;"));
+		boardVO.setBoardTitle(boardVO.getBoardTitle().replaceAll("<", "&lt;").replaceAll(">", "&gt;"));
 		replylist = replyService.getReplyView(boardNum);
 		model.addAttribute("board",boardVO);
 		model.addAttribute("replyInfo",replylist);
