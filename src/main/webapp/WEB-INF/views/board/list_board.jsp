@@ -18,7 +18,24 @@
 <link rel="stylesheet" href="css/member.css">
 </head>
 <body>
-	<div id="h1-div" class="login-box"><h1>자유 게시판</h1></div>
+<header>
+		<div class="container">
+			<h1>Spring Project</h1>
+			<nav>
+				<a href="/board/list">게시판</a>
+				<c:if test="${userId == null}">
+					<a href="login">로그인</a>
+					<a href="sign_up">회원가입</a>
+				</c:if>
+				<c:if test="${userId != null}">
+					<a href="logout">로그아웃</a>
+					<a href="mypage">마이페이지</a>
+				</c:if>
+				<a href="https://github.com/bj-ts/Spring-Web-Board">GITHUB</a>
+			</nav>
+		</div>
+	</header>
+	<div id="h1-div" class="login-box"><h1 id="list-free-board">자유 게시판</h1></div>
 	<c:set var="startNum" value="${page-(page-1)%5}" />
 	<c:set var="lastNum" value="${fn:substringBefore(Math.ceil(count/10), '.') }" />
 	<div class="col-md-10 col-md-offset-1" id="list-table">
