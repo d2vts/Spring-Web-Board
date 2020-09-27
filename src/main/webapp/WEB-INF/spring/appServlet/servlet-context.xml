@@ -20,6 +20,7 @@
 		<resources mapping="/js/**" location="/resources/js/" />
 		<resources mapping="/images/**" location="/resources/images/" />
 		<resources mapping="/resources/**" location="/resources/" />
+		<resources mapping="/images/**" location="/resources/images/" />
 
 
 

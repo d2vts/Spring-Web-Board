@@ -99,3 +99,6 @@ input#reg-reply:hover{
 	overflow:hidden;word-wrap:break-word;
 	max-width:1200px;
 }
+#content-enter{
+	white-space: pre;
+}

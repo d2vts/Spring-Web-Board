@@ -40,7 +40,9 @@
 		DELETE FROM MEMBER WHERE USERID=#{value}
 	</delete>
 	
-	<update id="updateMemberInfo">UPDATE MEMBER SET USERNICKNAME = #{userNickname}, USEREMAIL = #{userEmail}, USERADDRESS = #{userAddress} WHERE userId = #{userId}</update>
+	<update id="updateMemberInfo">
+		UPDATE MEMBER SET USERNICKNAME = #{userNickname}, USEREMAIL = #{userEmail}, USERADDRESS = #{userAddress} WHERE userId = #{userId}
+		</update>
 	
 
 </mapper> 

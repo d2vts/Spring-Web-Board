@@ -79,7 +79,7 @@ function undo(mod_reply){
 			<tr class="content-tr">
 				<th class="table-left" scope="row">&nbsp;&nbsp;<i
 					class="fas fa-file-alt fa-3x"></i></th>
-				<td style="word-break:normal" class="table-view-second">${board.boardContent}</td>
+				<td class="table-view-second" id="content-enter">${board.boardContent}</td>
 
 			</tr>
 		</tbody>
@@ -105,7 +105,7 @@ function undo(mod_reply){
 			<tr>
 				<td><i class="fas fa-user-tie fa-2x"></i>
 					${reply.re_userNickname }(${reply.re_userId })&nbsp;&nbsp;</td>
-				<td>${reply.re_content}</td>
+				<td><div id="content-enter">${reply.re_content}</div></td>
 				<td id="third-td"><button class="reply-modi-update" id="update_btn"
 						onclick="update(${reply.re_idNum})">
 						<i class="fas fa-pen fa-2x"></i>

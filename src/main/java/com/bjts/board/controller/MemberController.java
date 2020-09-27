@@ -103,7 +103,7 @@ public class MemberController {
 			return "member/modify_member";
 		}
 		memberService.updateMemberInfo(memberVo);
-		session.setAttribute("userNickname", request.getParameter("userNickname"));
+		session.setAttribute("userNickname", memberVo.getUserNickname());
 		return "redirect:/mypage";
 	}
 	

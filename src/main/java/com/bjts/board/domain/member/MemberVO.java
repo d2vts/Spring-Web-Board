@@ -31,6 +31,16 @@ public class MemberVO {
 		this.userAddress = userAddress;
 		this.userGender = userGender;
 	}
+	
+	public MemberVO(String userId, String userName, String userNickname, String userEmail,
+			String userAddress, String userGender) {
+		this.userId = userId;
+		this.userName = userName;
+		this.userNickname = userNickname;
+		this.userEmail = userEmail;
+		this.userAddress = userAddress;
+		this.userGender = userGender;
+	}
 
 	@Override
 	public String toString() {
