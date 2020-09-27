@@ -31,10 +31,10 @@
 		<div class="form-group">
 		<p class="title-content">제목</p>
 			<input type="text" name="boardTitle" class="form-control"
-				id="exampleFormControlInput1">
+				id="exampleFormControlInput1" maxlength="30">
 		<br>
 		<p class="title-content">내용</p>
-			<textarea class="form-control" name="boardContent" rows="10"></textarea>
+			<textarea class="form-control" name="boardContent" rows="10"  maxlength="1000"></textarea>
 			<br><br>
 			<input type="submit" class="btn btn-lg btn-block submit-btn" id="write-submit" value="글 작성">
 		</div>

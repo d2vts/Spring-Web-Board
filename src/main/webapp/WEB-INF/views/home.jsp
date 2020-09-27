@@ -26,7 +26,7 @@
 					<a href="logout">로그아웃</a>
 					<a href="mypage">마이페이지</a>
 				</c:if>
-				<a href="">MENU4</a>
+				<a href="https://github.com/bj-ts/Spring-Web-Board">GITHUB</a>
 			</nav>
 		</div>
 	</header>
