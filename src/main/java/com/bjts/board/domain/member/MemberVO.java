@@ -2,10 +2,12 @@ package com.bjts.board.domain.member;
 import java.util.Date;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class MemberVO {
@@ -29,5 +31,13 @@ public class MemberVO {
 		this.userAddress = userAddress;
 		this.userGender = userGender;
 	}
+
+	@Override
+	public String toString() {
+		return "MemberVO [idNum=" + idNum + ", userId=" + userId + ", userPassword=" + userPassword + ", userName="
+				+ userName + ", userNickname=" + userNickname + ", userEmail=" + userEmail + ", userAddress="
+				+ userAddress + ", userGender=" + userGender + ", cDate=" + cDate + "]";
+	}
+	
 
 }

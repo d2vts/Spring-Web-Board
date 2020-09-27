@@ -56,6 +56,7 @@ public class MemberDaoImpl implements MemberDao{
 	@Override
 	public void updateMemberInfo(MemberVO memberVo) {
 		sqlSession.update(namespace + ".updateMemberInfo", memberVo);
+		System.out.println("매퍼 통과 updateInfo의 memberVo 값은 : " + memberVo.toString());
 	}
   
 	@Override

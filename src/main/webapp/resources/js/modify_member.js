@@ -12,7 +12,6 @@ $(function () {
                 var nicknameForm = /^[a-zA-Z0-9가-힣]{2,8}$/;
 
 	        	if ($.trim(data) != $('#userNickname').val()) {
-	
 						if (false === nicknameForm.test(nickname)) {
 							$("#sign-check-info-nick").css("color", "red").css('font-size', '8px').text('공백없이 영문,한글,숫자사용가능 2~8자리로 가능합니다.');
 							userNicknameCheck = 0;
@@ -64,17 +63,11 @@ function noSpaceForm(obj) { // 공백사용못하게
 
 
 function submitCheck() {
-	
-	$('#userNickname').focus();
-    $('#userNickname').blur();
-
-    $('#userEmail').focus();
-    $('#userEmail').blur();
 
     if (userNicknameCheck == 0) {
         alert('닉네임 조건이 맞지 않습니다.');
         return false;
-    } else if (userEmailCheck == 0) {
+    }if (userEmailCheck == 0) {
         alert('이메일 조건이 맞지 않습니다.');
         return false;
     } else{

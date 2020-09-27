@@ -1,6 +1,7 @@
 package com.bjts.board.controller;
 
 import java.awt.List;
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -101,7 +102,6 @@ public class MemberController {
 			model.addAttribute("memberVo", memberVo);
 			return "member/modify_member";
 		}
-		System.out.println(memberVo.toString());
 		memberService.updateMemberInfo(memberVo);
 		session.setAttribute("userNickname", request.getParameter("userNickname"));
 		return "redirect:/mypage";

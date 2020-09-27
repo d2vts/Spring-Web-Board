@@ -63,6 +63,11 @@ public class BoardController {
 		return "board/list_board";
 	}
 	
+	@RequestMapping("list/")
+	public String list_redirect(Model model) {
+		return "redirect:/list";
+	}
+	
 	@RequestMapping("list/update_board")
 	public String update_board(BoardVO boardVo, @RequestParam("boardNum") int boardNum, Model model) {
 		logger.info("update_board()-GET");
