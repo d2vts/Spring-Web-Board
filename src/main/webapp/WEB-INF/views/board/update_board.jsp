@@ -25,6 +25,23 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
+<header>
+		<div class="container">
+			<h1>Spring Project</h1>
+			<nav>
+				<a href="/board/list">게시판</a>
+				<c:if test="${userId == null}">
+					<a href="login">로그인</a>
+					<a href="sign_up">회원가입</a>
+				</c:if>
+				<c:if test="${userId != null}">
+					<a href="logout">로그아웃</a>
+					<a href="mypage">마이페이지</a>
+				</c:if>
+				<a href="https://github.com/bj-ts/Spring-Web-Board">GITHUB</a>
+			</nav>
+		</div>
+	</header>
 	<h1>&nbsp;</h1>
     
     <form action="update_board" method="POST" class="write-form">
