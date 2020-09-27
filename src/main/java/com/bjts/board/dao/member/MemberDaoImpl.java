@@ -55,6 +55,7 @@ public class MemberDaoImpl implements MemberDao{
 	
 	@Override
 	public void updateMemberInfo(MemberVO memberVo) {
+		System.out.println(memberVo.getUserId());
 		sqlSession.update(namespace + ".updateMemberInfo", memberVo);
 	}
   

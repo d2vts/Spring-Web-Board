@@ -5,16 +5,16 @@
 <head>
 <meta charset="UTF-8">
 <title>DELETE MEMBER</title>
-</head>
+<link rel="stylesheet" href="/board/css/member.css"></head>
 <body>
-
-<form action="/board/mypage/delete_member" method="POST">
-	비밀번호 확인 <br/>
-	<input type="password" name="password">
-	<input type="submit" value="회원탈퇴">
-
-
-
-</form>
+	<div class="login-box">
+		<h1>Secession</h1>
+		<form action="/board/mypage/delete_member" method="POST">
+			<div class="textbox">
+				<input type="password" name="password" placeholder="UserPassword">
+			</div>
+			<input type="submit" class="submit-btn" value="회 원 탈 퇴">
+		</form>
+	</div>
 </body>
 </html>
