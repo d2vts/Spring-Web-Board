@@ -6,7 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>DELETE MEMBER</title>
-<link rel="stylesheet" href="/board/css/member.css"></head>
+<link rel="stylesheet" href="/board/css/member.css">
+</head>
 <body>
 	<header>
 		<div class="container">
