@@ -1,10 +1,15 @@
 package com.bjts.board.domain.board;
 
 import java.util.Date;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import lombok.Data;
-
-@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 public class BoardVO {
 	private int idNum;
 	private String userId;
@@ -22,9 +27,6 @@ public class BoardVO {
 		this.boardContent = boardContent;
 		this.boardView = boardView;
 		this.cDate = cDate;
-	}
-	public BoardVO() {
-		
 	}
 
 }

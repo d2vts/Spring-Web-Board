@@ -204,3 +204,8 @@ header nav a{
 #list-free-board{
 	margin-top:90px;
 }
+
+#white-a:hover{
+	text-decoration: none;
+	color:#4caf50;
+}

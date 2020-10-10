@@ -7,28 +7,27 @@
 <head>
 <meta charset="UTF-8">
 <title>modify</title>
-<link rel="stylesheet" href="/board/css/member.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="js/sign_up.js"></script>
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="/board/css/member.css">
+<script src="/board/js/modify_member.js"></script>
 </head>
 <body>
 <header>
 		<div class="container">
-			<h1>Spring Project</h1>
+			<h1><a id="h1-sp" href="/board">Spring Project</a></h1>
 			<nav>
-				<a href="list">게시판</a>
+				<a href="/board/list" id="white-a">게시판</a>
 				<c:if test="${userId == null}">
-					<a href="login">로그인</a>
-					<a href="sign_up">회원가입</a>
+					<a href="/board/login" id="white-a">로그인</a>
+					<a href="/board/sign_up" id="white-a">회원가입</a>
 				</c:if>
 				<c:if test="${userId != null}">
-					<a href="logout">로그아웃</a>
-					<a href="mypage">마이페이지</a>
+					<a href="/board/logout" id="white-a">로그아웃</a>
+					<a href="/board/mypage" id="white-a">마이페이지</a>
 				</c:if>
-				<a href="https://github.com/bj-ts/Spring-Web-Board">GITHUB</a>
+				<a href="https://github.com/d2vts/Spring-Web-Board" id="white-a">GITHUB</a>
 			</nav>
 		</div>
 	</header>
@@ -44,18 +43,17 @@
 			<div class="textbox">
 				<i class="fas fa-address-card"></i>
 				<input type="text" name="userName" id="userName" value="${memberVo.userName }" readonly>
-				<p id="sign-check-info-name"></p>
 				<form:errors path="userName" cssStyle="color:red;" />
 			</div>
 			<div class="textbox">
 				<i class="fas fa-id-badge"></i>
-				<input type="text" name="userNickname" id="userNickname" value="${memberVo.userNickname }">
+				<input type="text" name="userNickname" id="userNickname" value="${memberVo.userNickname}"><br/>
 				<p id="sign-check-info-nick"></p>
 				<form:errors path="userNickname" cssStyle="color:red;" />
 			</div>
 			<div class="textbox">
 				<i class="fas fa-envelope"></i>
-				<input type="email" name="userEmail" id="userEmail"	value="${memberVo.userEmail }">
+				<input type="email" name="userEmail" id="userEmail"	value="${memberVo.userEmail }"><br/>
 				<p id="sign-check-info-email"></p>
 				<form:errors path="userEmail" cssStyle="color:red;" />
 			</div>
@@ -66,16 +64,29 @@
 			        	<option class="select-option" value="서울특별시" <c:if test="${memberVo.userAddress == '서울특별시' }">selected</c:if>>서울특별시</option>
 			        	<option class="select-option" value="대구광역시" <c:if test="${memberVo.userAddress == '대구광역시' }">selected</c:if>>대구광역시</option>
 			        	<option class="select-option" value="부산광역시" <c:if test="${memberVo.userAddress == '부산광역시' }">selected</c:if>>부산광역시</option>
+			        	
+			        	<option class="select-option" value="서울특별시" selected>서울특별시</option>
+			           <option class="select-option" value="부산광역시">부산광역시</option>
+			           <option class="select-option" value="울산광역시">울산광역시</option>
+			           <option class="select-option" value="대구광역시">대구광역시</option>
+			           <option class="select-option" value="대전광역시">대전광역시</option>
+			           <option class="select-option" value="인천광역시">인천광역시</option>
+			           <option class="select-option" value="광주광역시">광주광역시</option>
+			           <option class="select-option" value="세종특별시">세종특별시</option>
+			           <option class="select-option" value="경기도">경기도</option>
+			           <option class="select-option" value="경상남도">경상남도</option>
+			           <option class="select-option" value="경상북도">경상북도</option>
+			           <option class="select-option" value="전라남도">전라남도</option>
+			           <option class="select-option" value="전라북도">전라북도</option>
+			           <option class="select-option" value="충청남도">충청남도</option>
+			           <option class="select-option" value="충청북도">충청북도</option>
+			           <option class="select-option" value="강원도">강원도</option>
+			           <option class="select-option" value="제주도">제주도</option>
+			  
 			      	</select>
 				</div>
 		   		<p id="sign-check-info-addr"></p>
 		    </div>
-		    <div>
-		      	<i class="fas fa-venus-mars"></i>
-		      	<input type="radio" name="userGender" id="userGender" value="남" <c:if test="${memberVo.userGender == '남' }">checked</c:if>>남
-				<input type="radio" name="userGender" id="userGender" value="여" <c:if test="${memberVo.userGender == '여' }">checked</c:if>>여
-				<p id="sign-check-info-gender"></p>
-			</div>
 			<input type="submit" class="submit-btn" value="전송">
 		</form:form>
 	</div>

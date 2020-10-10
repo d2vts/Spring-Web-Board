@@ -128,3 +128,8 @@ header nav a{
     display: inline-block; vertical-align: middle;
     padding: 5px; margin: 0 10px;
 }
+
+#white-a:hover{
+	text-decoration: none;
+	color:#4caf50;
+}

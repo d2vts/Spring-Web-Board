@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bjts.board.dao.board.BoardDao">
+
+	<select id="getBoardInfo" resultType="com.bjts.board.domain.board.BoardVO">
+		SELECT * FROM BOARD WHERE IDNUM = #{value}
+	</select>
+	
+	<select id="getBoardInfoAll" parameterType="hashmap"
+        resultType="com.bjts.board.domain.board.BoardVO">
+        SELECT * FROM BOARD WHERE ${field} LIKE CONCAT('%', #{query}, '%') ORDER BY CDATE DESC LIMIT ${startNum},${lastNum}
+    </select>
+
+    <select id="getBoardInfoTitleNick" parameterType="hashmap"
+        resultType="com.bjts.board.domain.board.BoardVO">
+        SELECT * FROM BOARD WHERE ${userNickname} LIKE CONCAT('%', #{query}, '%') OR ${boardTitle} LIKE CONCAT('%', #{query}, '%') ORDER BY CDATE DESC LIMIT ${startNum},${lastNum}
+    </select>
+
+    <select id="getBoardCountTitleNick" parameterType="hashmap" resultType="int">
+        SELECT COUNT(IDNUM) COUNT FROM (SELECT * FROM BOARD WHERE ${userNickname} LIKE CONCAT('%', #{query}, '%') OR ${boardTitle} LIKE CONCAT('%', #{query}, '%') ORDER BY CDATE DESC)CNT
+    </select>
+
+    <select id="getBoardCount" parameterType="hashmap" resultType="int">
+        SELECT COUNT(IDNUM) COUNT FROM (SELECT * FROM BOARD WHERE ${field} LIKE CONCAT('%', #{query}, '%') ORDER BY CDATE DESC)CNT
+    </select>
+
+	<select id="getBoardView"
+		resultType="com.bjts.board.domain.board.BoardVO">
+		SELECT * FROM BOARD WHERE idNum=#{value}
+	</select>
+	
+	<insert id="insertBoardInfo" useGeneratedKeys="true">
+		INSERT INTO BOARD(userId,userNickname, boardTitle, boardContent, boardView, cDate)
+		VALUES(#{userId},#{userNickname},#{boardTitle},#{boardContent},#{boardView},NOW())
+	</insert>
+	
+	<update id="updateBoardInfo">
+		UPDATE BOARD SET BOARDTITLE = #{boardTitle},
+		BOARDCONTENT = #{boardContent} WHERE IDNUM = #{idNum}
+	</update>
+
+	<update id="updateView">
+		UPDATE BOARD SET BOARDVIEW= BOARDVIEW+1 WHERE IDNUM=#{boardNum}
+	</update>
+
+	<delete id="deleteBoardInfo">
+		DELETE FROM BOARD WHERE idNum=#{value}
+	</delete>
+
+</mapper> 

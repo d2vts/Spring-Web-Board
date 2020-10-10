@@ -27,7 +27,6 @@ public class BoardDaoImpl implements BoardDao {
 	public List<BoardVO> getBoardInfoAll(HashMap<String, String> map) {
 		String field = map.get("field");
 		if(!field.equals("titleNick")) {
-			System.out.println("here");
 			return sqlSession.selectList(namespace + ".getBoardInfoAll", map);
 		}
 		else {

@@ -1,0 +1,49 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bjts.board.dao.member.MemberDao">
+
+	<select id="getMemberPassword" resultType="String">
+		SELECT USERPASSWORD FROM MEMBERS WHERE USERID = #{value}
+	</select>
+	
+	<select id="getMemberInfo" resultType="com.bjts.board.domain.member.MemberVO">
+		SELECT * FROM MEMBERS WHERE USERID = #{value}
+	</select>
+	
+	<select id="checkMemberPassword" resultType="String">
+		SELECT USERPASSWORD FROM MEMBERS WHERE USERID = #{value}
+	</select>
+	
+	<select id="getMemberId" resultType="String">
+		SELECT USERID FROM MEMBERS WHERE USERID=#{check_id}
+	</select>
+
+	<select id="getMemberNickname" resultType="String">
+		SELECT USERNICKNAME FROM MEMBERS WHERE USERNICKNAME=#{check_nickname}
+	</select>
+	
+	<select id="getMemberNicknameById" resultType="String">
+		SELECT USERNICKNAME FROM MEMBERS WHERE USERID=#{value}
+	</select>
+
+	<insert id="joinMemberInfo" useGeneratedKeys="true">
+		INSERT INTO MEMBERS(userId, userPassword, userName, userNickname, userEmail, userAddress, userGender, cDate)
+		VALUES(#{userId},#{userPassword},#{userName},#{userNickname},#{userEmail},#{userAddress},#{userGender},NOW())
+	</insert>
+	
+	<update id="updateMemberPassword">
+		UPDATE MEMBERS SET USERPASSWORD= #{userPassword} WHERE USERID=#{userId}
+	</update>
+
+	<delete id="deleteMemberInfo">
+		DELETE FROM MEMBERS WHERE USERID=#{value}
+	</delete>
+	
+	<update id="updateMemberInfo">
+		UPDATE MEMBERS SET USERNICKNAME = #{userNickname}, USEREMAIL = #{userEmail}, USERADDRESS = #{userAddress} WHERE userId = #{userId}
+		</update>
+	
+
+</mapper> 

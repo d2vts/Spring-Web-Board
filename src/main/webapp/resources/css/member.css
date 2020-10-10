@@ -13,6 +13,10 @@ body::before{
 	top:0; right:0; bottom:0; left:0;
 	background-color: rgba(0,0,0,.7);
 }
+#h1-sp{
+	text-decoration: none;
+	color : white;
+}
 .inline-block{
 	display: inline-block;
 }
@@ -23,7 +27,7 @@ body::before{
 	background:gray;
 }
 .login-box{
-  margin-top:100px;
+  margin-top:50px;
   width: 280px;
   position: absolute;
   top: 50%;
@@ -31,6 +35,7 @@ body::before{
   transform: translate(-50%,-50%);
   color: white;
   z-index:2;
+  
 }
 .login-box h1{
   float: left;
@@ -105,4 +110,8 @@ header nav a{
 }
 #userGender{
 	margin:0 20px;
+}
+#white-a:hover{
+	text-decoration: none;
+	color:#4caf50;
 }

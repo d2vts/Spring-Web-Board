@@ -134,12 +134,21 @@
 	    	<version>4.3.1.Final</version>
 	    </dependency>
 		
+		<!-- oracle -->
 		<dependency>
 		    <groupId>com.oracle.ojdbc</groupId>
             <artifactId>ojdbc8</artifactId>
             <version>19.3.0.0</version>
 		</dependency>
 	
+		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+		<dependency>
+		    <groupId>mysql</groupId>
+		    <artifactId>mysql-connector-java</artifactId>
+		    <version>8.0.21</version>
+		</dependency>
+		
+		
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis</artifactId>
@@ -150,6 +159,15 @@
 			<artifactId>mybatis-spring</artifactId>
 			<version>1.2.2</version>
 		</dependency>    
+		
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-test -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-test</artifactId>
+		    <version>5.2.8.RELEASE</version>
+		    <scope>test</scope>
+		</dependency>
+		
 		
 		<!-- BCryptPasswordEncoder  -->
 		<!--스프링시큐리티 web 라이브러리 -->

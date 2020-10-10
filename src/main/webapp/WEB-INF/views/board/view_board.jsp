@@ -17,7 +17,7 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
 	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
 	crossorigin="anonymous">
-<link rel="stylesheet" href="/board/css/view.css">
+
 <link
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css"
 	rel='stylesheet' type='text/css'>
@@ -43,23 +43,23 @@ function undo(mod_reply){
 	$('#'+mod_reply).css("display","none");
 	}
 </script>
-
+<link rel="stylesheet" href="/board/css/view.css">
 </head>
 <body>
 <header>
 		<div class="container">
-			<h1>Spring Project</h1>
+			<h1><a id="h1-sp" href="/board">Spring Project</a></h1>
 			<nav>
-				<a href="/board/list">게시판</a>
+				<a href="/board/list" id="white-a">게시판</a>
 				<c:if test="${userId == null}">
-					<a href="login">로그인</a>
-					<a href="sign_up">회원가입</a>
+					<a href="/board/login" id="white-a">로그인</a>
+					<a href="/board/sign_up" id="white-a">회원가입</a>
 				</c:if>
 				<c:if test="${userId != null}">
-					<a href="logout">로그아웃</a>
-					<a href="mypage">마이페이지</a>
+					<a href="/board/logout" id="white-a">로그아웃</a>
+					<a href="/board/mypage" id="white-a">마이페이지</a>
 				</c:if>
-				<a href="https://github.com/bj-ts/Spring-Web-Board">GITHUB</a>
+				<a href="https://github.com/d2vts/Spring-Web-Board" id="white-a">GITHUB</a>
 			</nav>
 		</div>
 	</header>

@@ -47,19 +47,24 @@ public class BoardController {
 		if(query == null)
 			query = "";
 		int n_page = Integer.parseInt(page);
-		int startNum = 1+(n_page-1)*10;
-		int lastNum = n_page*10;
+		int startNum = (n_page-1)*10;
+        int lastNum = n_page*10-1;
 		HashMap<String , String> map = new HashMap<String , String>();
 		map.put("field", field);
 		map.put("query", query);
 		map.put("startNum", String.valueOf(startNum));
 		map.put("lastNum", String.valueOf(lastNum));
 		List<BoardVO> boardlist = new ArrayList<BoardVO>();
+		
 		boardlist = boardService.getBoardInfoAll(map);
 		int count = boardService.getBoardCount(field, query);
+		
+		System.out.println("boardlist : " + boardlist);
 		model.addAttribute("boardInfo", boardlist);
 		model.addAttribute("page", page);
 		model.addAttribute("count", count);
+		
+		
 		return "board/list_board";
 	}
 	

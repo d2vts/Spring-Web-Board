@@ -22,8 +22,6 @@
 		<resources mapping="/resources/**" location="/resources/" />
 		<resources mapping="/images/**" location="/resources/images/" />
 
-
-
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
@@ -32,7 +30,8 @@
 	
 	<context:component-scan base-package="com.bjts.board" />
 	
-	<beans:bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	
+	<!-- <beans:bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 
 		<beans:property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></beans:property>
 
@@ -42,7 +41,7 @@
 
 		<beans:property name="password" value="bjts"></beans:property>
 
-	</beans:bean>
+	</beans:bean> -->
 
 
 	<beans:bean name="template" class="org.springframework.jdbc.core.JdbcTemplate">

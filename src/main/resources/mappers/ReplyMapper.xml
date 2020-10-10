@@ -9,9 +9,8 @@
 		SELECT * FROM REPLY WHERE RE_BOARDID = #{value} ORDER BY RE_CDATE DESC
 	</select>
 
-	<insert id="insertReplyInfo">
-		INSERT INTO REPLY VALUES(REPLY_ID_SEQ.NEXTVAL, #{re_boardId}, #{re_userId},
-		#{re_userNickname}, #{re_content}, SYSDATE)
+	<insert id="insertReplyInfo" useGeneratedKeys="true">
+		INSERT INTO REPLY (re_boardId, re_userId, re_userNickname, re_content, re_cDate) VALUES(#{re_boardId}, #{re_userId}, #{re_userNickname}, #{re_content}, NOW())
 	</insert>
 		
 	<update id="updateReplyInfo">
@@ -21,4 +20,5 @@
 	<delete id="deleteReplyInfo">
 		DELETE FROM REPLY WHERE RE_IDNUM = #{value}
 	</delete>
+	
 </mapper> 

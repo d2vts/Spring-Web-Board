@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.bjts.board.dao.reply.ReplyDao">
+
+	<select id="getReplyView" resultType="com.bjts.board.domain.reply.ReplyVO">
+		SELECT * FROM REPLY WHERE RE_BOARDID = #{value} ORDER BY RE_CDATE DESC
+	</select>
+
+	<insert id="insertReplyInfo" useGeneratedKeys="true">
+		INSERT INTO REPLY (re_boardId, re_userId, re_userNickname, re_content, re_cDate) VALUES(#{re_boardId}, #{re_userId}, #{re_userNickname}, #{re_content}, NOW())
+	</insert>
+		
+	<update id="updateReplyInfo">
+		UPDATE REPLY SET RE_CONTENT=#{re_content} WHERE RE_IDNUM=#{re_idNum}
+	</update>
+	
+	<delete id="deleteReplyInfo">
+		DELETE FROM REPLY WHERE RE_IDNUM = #{value}
+	</delete>
+	
+</mapper> 
