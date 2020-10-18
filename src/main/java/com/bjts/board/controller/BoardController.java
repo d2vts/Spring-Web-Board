@@ -47,8 +47,8 @@ public class BoardController {
 		if(query == null)
 			query = "";
 		int n_page = Integer.parseInt(page);
-		int startNum = (n_page-1)*10;
-        int lastNum = n_page*10-1;
+		int startNum = (n_page-1)*10+1;
+        int lastNum = 10;
 		HashMap<String , String> map = new HashMap<String , String>();
 		map.put("field", field);
 		map.put("query", query);
