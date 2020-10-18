@@ -23,21 +23,21 @@
 	crossorigin="anonymous"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<link rel="stylesheet" href="/board/css/w_u_board.css">
+	<link rel="stylesheet" href="/css/w_u_board.css">
 </head>
 <body>
 <header>
 		<div class="container">
-			<h1><a id="h1-sp" href="/board">Spring Project</a></h1>
+			<h1><a id="h1-sp" href="/">Spring Project</a></h1>
 			<nav>
-				<a href="/board/list" id="white-a">게시판</a>
+				<a href="/list" id="white-a">게시판</a>
 				<c:if test="${userId == null}">
-					<a href="/board/login" id="white-a">로그인</a>
-					<a href="/board/sign_up" id="white-a">회원가입</a>
+					<a href="/login" id="white-a">로그인</a>
+					<a href="/sign_up" id="white-a">회원가입</a>
 				</c:if>
 				<c:if test="${userId != null}">
-					<a href="/board/logout" id="white-a">로그아웃</a>
-					<a href="/board/mypage" id="white-a">마이페이지</a>
+					<a href="/logout" id="white-a">로그아웃</a>
+					<a href="/mypage" id="white-a">마이페이지</a>
 				</c:if>
 				<a href="https://github.com/d2vts/Spring-Web-Board" id="white-a">GITHUB</a>
 			</nav>
@@ -58,7 +58,7 @@
 			<input type="submit" class="btn btn-lg btn-block submit-btn" id="write-submit" value="수정 완료">
 		</div>
 	</form>
-	<button class="btn btn-lg btn-block submit-btn" id="write-submit"  onClick="location.href='/board/list'">목록으로</button>
+	<button class="btn btn-lg btn-block submit-btn" id="write-submit"  onClick="location.href='/list'">목록으로</button>
 	</div>
 </body>
 </body>

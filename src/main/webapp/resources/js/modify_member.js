@@ -4,7 +4,7 @@ $(function () {
 	$('#userNickname').blur(function () {
 		$.ajax({
 	        type: "POST",
-	        url: "/board/check_nickname_ajax",
+	        url: "/check_nickname_ajax",
 	        data: {"userNickname": $('#userNickname').val()},
 	        success: function(data){
 			if($('#userNickname').val() !=''){

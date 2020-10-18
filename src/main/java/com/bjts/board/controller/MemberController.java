@@ -154,9 +154,6 @@ public class MemberController {
 				model.addAttribute("value_status", "notMatch");
 				return "redirect:change_password";
 			}
-			
-			
-			
 		}
 	}
 	

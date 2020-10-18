@@ -6,21 +6,21 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="/board/css/member.css">
+<link rel="stylesheet" href="css/member.css">
 </head>
 <body>
 <header>
 		<div class="container">
-			<h1><a id="h1-sp" href="/board">Spring Project</a></h1>
+			<h1><a id="h1-sp" href="/">Spring Project</a></h1>
 			<nav>
-				<a href="/board/list" id="white-a">게시판</a>
+				<a href="/list" id="white-a">게시판</a>
 				<c:if test="${userId == null}">
-					<a href="/board/login" id="white-a">로그인</a>
-					<a href="/board/sign_up" id="white-a">회원가입</a>
+					<a href="/login" id="white-a">로그인</a>
+					<a href="/sign_up" id="white-a">회원가입</a>
 				</c:if>
 				<c:if test="${userId != null}">
-					<a href="/board/logout" id="white-a">로그아웃</a>
-					<a href="/board/mypage" id="white-a">마이페이지</a>
+					<a href="/logout" id="white-a">로그아웃</a>
+					<a href="/mypage" id="white-a">마이페이지</a>
 				</c:if>
 				<a href="https://github.com/d2vts/Spring-Web-Board" id="white-a">GITHUB</a>
 			</nav>

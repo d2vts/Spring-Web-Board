@@ -43,21 +43,21 @@ function undo(mod_reply){
 	$('#'+mod_reply).css("display","none");
 	}
 </script>
-<link rel="stylesheet" href="/board/css/view.css">
+<link rel="stylesheet" href="/css/view.css">
 </head>
 <body>
 <header>
 		<div class="container">
-			<h1><a id="h1-sp" href="/board">Spring Project</a></h1>
+			<h1><a id="h1-sp" href="/">Spring Project</a></h1>
 			<nav>
-				<a href="/board/list" id="white-a">게시판</a>
+				<a href="/list" id="white-a">게시판</a>
 				<c:if test="${userId == null}">
-					<a href="/board/login" id="white-a">로그인</a>
-					<a href="/board/sign_up" id="white-a">회원가입</a>
+					<a href="/login" id="white-a">로그인</a>
+					<a href="/sign_up" id="white-a">회원가입</a>
 				</c:if>
 				<c:if test="${userId != null}">
-					<a href="/board/logout" id="white-a">로그아웃</a>
-					<a href="/board/mypage" id="white-a">마이페이지</a>
+					<a href="/logout" id="white-a">로그아웃</a>
+					<a href="/mypage" id="white-a">마이페이지</a>
 				</c:if>
 				<a href="https://github.com/d2vts/Spring-Web-Board" id="white-a">GITHUB</a>
 			</nav>
@@ -70,13 +70,13 @@ function undo(mod_reply){
 				<td></td>
 				<td class="write-update-list table-view-second">
 				<c:if test="${board.userNickname.equals(userNickname)}">
-				<a href="/board/list/update_board?boardNum=${board.idNum}">
+				<a href="/list/update_board?boardNum=${board.idNum}">
 				<i style="" class="fas fa-pen fa-2x"></i>&nbsp;&nbsp;수정</a> 
-				<a href="/board/list/delete_board?boardNum=${board.idNum}">
+				<a href="/list/delete_board?boardNum=${board.idNum}">
 				<i class="fas fa-trash-alt fa-2x"></i>삭제</a>
 				</c:if>
 				&nbsp;&nbsp;&nbsp;
-				<a href="/board/list"><i class="fas fa-undo-alt fa-2x"></i>&nbsp;&nbsp;목록으로</a>&nbsp;&nbsp;&nbsp;</td>
+				<a href="/list"><i class="fas fa-undo-alt fa-2x"></i>&nbsp;&nbsp;목록으로</a>&nbsp;&nbsp;&nbsp;</td>
 			</tr>
 		</thead>
 		<tbody>
@@ -132,7 +132,7 @@ function undo(mod_reply){
 					</button>
 					<button class="reply-modi-update">
 						<a id="reply-delete-a"
-							href="/board/list/delete_reply?replyNum=${reply.re_idNum}&boardNum=${board.idNum}">
+							href="/list/delete_reply?replyNum=${reply.re_idNum}&boardNum=${board.idNum}">
 							<i class="fas fa-trash-alt fa-2x"></i>
 						</a>
 					</button></td>
@@ -141,7 +141,7 @@ function undo(mod_reply){
 				<tr>
 					<td colspan="3">
 						<form class="update-reply" id="${reply.re_idNum}"
-							action="/board/list/update_reply" method="post">
+							action="/list/update_reply" method="post">
 							<input type="hidden" name="re_idNum" value="${reply.re_idNum}">
 							<input type="hidden" name="re_boardId" value="${board.idNum}">
 							<textarea class="form-control" name="re_content"

@@ -18,16 +18,16 @@
 <body>
 <header>
 		<div class="container"> 
-			<h1><a id="h1-sp" href="/board">Spring Project</a></h1>
+			<h1><a id="h1-sp" href="/">Spring Project</a></h1>
 			<nav>
-				<a href="/board/list" id="white-a">게시판</a>
+				<a href="/list" id="white-a">게시판</a>
 				<c:if test="${userId == null}"> <!-- BoardController에서 받아와야할 값이 있는 부분 -->
-					<a href="/board/login" id="white-a">로그인</a>
-					<a href="/board/sign_up" id="white-a">회원가입</a>
+					<a href="/login" id="white-a">로그인</a>
+					<a href="/sign_up" id="white-a">회원가입</a>
 				</c:if>
 				<c:if test="${userId != null}"> <!-- BoardController에서 받아와야할 값이 있는 부분 -->
-					<a href="/board/logout" id="white-a">로그아웃</a>
-					<a href="/board/mypage" id="white-a">마이페이지</a>
+					<a href="/logout" id="white-a">로그아웃</a>
+					<a href="/mypage" id="white-a">마이페이지</a>
 				</c:if>
 				<a href="https://github.com/d2vts/Spring-Web-Board" id="white-a">GITHUB</a>
 			</nav>
@@ -69,7 +69,6 @@
                 <table class="table table-bordered table-list">
                   <thead>
                     <tr>
-                        <th style="min-width:50px;">번호</th>
                         <th>제목</th>
                         <th>작성자</th>
 						<th style="min-width:60px;">조회수</th>
@@ -79,9 +78,8 @@
                   <tbody>
 					<c:forEach items="${boardInfo}" var="list">
 						<tr id="list-tr">
-							<td id="first-td">${list.idNum}</td><!-- BoardController에서 받아와야할 값이 있는 부분 -->
-							<td width="1000" style="text-align:left" onClick="location.href='/board/list/view?boardNum=${list.idNum}'">&nbsp;&nbsp;&nbsp;
-							<a id ="board-title-td" href="/board/list/view?boardNum=${list.idNum}">${list. boardTitle}</a></td>
+							<td width="1000" style="text-align:left" onClick="location.href='/list/view?boardNum=${list.idNum}'">&nbsp;&nbsp;&nbsp;
+							<a id ="board-title-td" href="/list/view?boardNum=${list.idNum}">${list. boardTitle}</a></td>
 							<td>${list. userNickname}</td>
 							<td>${list. boardView}</td>
 							<td><fmt:formatDate pattern="yyyy/MM/dd" value="${list. CDate}"/></td>

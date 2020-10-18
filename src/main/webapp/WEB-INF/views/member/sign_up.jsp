@@ -16,16 +16,16 @@
 <body>
 <header>
 		<div class="container">
-			<h1><a id="h1-sp" href="/board">Spring Project</a></h1>
+			<h1><a id="h1-sp" href="/">Spring Project</a></h1>
 			<nav>
-				<a href="/board/list" id="white-a">게시판</a>
+				<a href="/list" id="white-a">게시판</a>
 				<c:if test="${userId == null}">
-					<a href="/board/login" id="white-a">로그인</a>
-					<a href="/board/sign_up" id="white-a">회원가입</a>
+					<a href="/login" id="white-a">로그인</a>
+					<a href="/sign_up" id="white-a">회원가입</a>
 				</c:if>
 				<c:if test="${userId != null}">
-					<a href="/board/logout" id="white-a">로그아웃</a>
-					<a href="/board/mypage" id="white-a">마이페이지</a>
+					<a href="/logout" id="white-a">로그아웃</a>
+					<a href="/mypage" id="white-a">마이페이지</a>
 				</c:if>
 				<a href="https://github.com/d2vts/Spring-Web-Board" id="white-a">GITHUB</a>
 			</nav>
@@ -33,18 +33,18 @@
 	</header>
 	<div class="login-box">
 		<h1>Sign Up</h1>
-		<form:form commandName="memberVO">
+		<form:form commandName="memberVO"> <!-- 서버측에서도 에러처리를 했지만 일시적으로 주석처리 -->
 	        <div class="textbox">
 	        	<i class="fas fa-user"></i>
 	        	<input type="text" name="userId" id="userId" placeholder="UserId" autocomplete="off" value="${memberVo.userId }"><br/>
 				<p id="sign-check-info-id"></p>
-				<form:errors path="userId" cssStyle="color:red;" />	
+				<%-- <form:errors path="userId" cssStyle="color:white; font-size:10px"/>	 --%>
 	        </div>
 			<div class="textbox">
 				<i class="fas fa-lock"></i>
 				<input type="password" name="userPassword" id="userPassword" placeholder="Password"><br/>
 				<p id="sign-check-info-pw"></p>
-				<form:errors path="userPassword" cssStyle="color:red;" />
+				<%-- <form:errors path="userPassword" cssStyle="color:white; font-size:10px" /> --%>
 			</div>
 			<div class="textbox">
 				<i class="fas fa-lock"></i>
@@ -55,19 +55,19 @@
 				<i class="fas fa-address-card"></i>
 		        <input type="text" name="userName" id="userName" placeholder="UserName" value="${memberVo.userName }"><br>
 				<p id="sign-check-info-name"></p>
-				<form:errors path="userName" cssStyle="color:red;" />
+				<%-- <form:errors path="userName" cssStyle="color:white; font-size:10px" /> --%>
 			</div>
 			<div class="textbox">
 				<i class="fas fa-id-badge"></i>
 		        <input type="text" name="userNickname" id="userNickname" placeholder="UserNickname" value="${memberVo.userNickname }"><br>
 				<p id="sign-check-info-nick"></p>
-				<form:errors path="userNickname" cssStyle="color:red;" />
+				<%-- <form:errors path="userNickname" cssStyle="color:white; font-size:10px" /> --%>
 			</div>
 			<div class="textbox">
 				<i class="fas fa-envelope"></i>
 		        <input type="email" name="userEmail" id="userEmail" placeholder="UserEmail" value="${memberVo.userEmail }"><br>
 				<p id="sign-check-info-email"></p>
-				<form:errors path="userEmail" cssStyle="color:red;" />
+				<%-- <form:errors path="userEmail" cssStyle="color:white; font-size:10px" /> --%>
 			</div>
 			<div class="textbox">
 				<i class="fas fa-map-marker-alt"></i>
