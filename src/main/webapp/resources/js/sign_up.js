@@ -109,7 +109,7 @@ $(function () {
 				var nickname = $("#userNickname").val();
                 var nicknameForm = /^[a-zA-Z0-9가-힣]{2,8}$/;
 
-	        	if ($.trim(data) != $('#userNickname').val()) {
+	        	if (data != $('#userNickname').val()) {
 	
 						if (false === nicknameForm.test(nickname)) {
 							$("#sign-check-info-nick").css("color", "red").css('font-size', '8px').text('공백없이 영문,한글,숫자사용가능 2~8자리로 가능합니다.');

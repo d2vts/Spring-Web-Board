@@ -113,15 +113,22 @@ public class MemberController {
 		String db_userId = memberService.getMemberId(memberVo.getUserId());
 		String db_userNickname = memberService.getMemberNickname(memberVo.getUserNickname());
 		new MemberValidator().validate(memberVo, error);
-		if(db_userId != null)
+		if(db_userId != null) {
+			logger.info("userID dupli");
 			error.rejectValue("userId", "userIdDuplicated");
-		if(db_userNickname != null)
+		}
+		if(db_userNickname != null) {
+			logger.info("userNICKNAME dupli");
 			error.rejectValue("userNickname", "userNicknameDuplicated");
+		}
 		if(error.hasErrors()) {
 			model.addAttribute("memberVo", memberVo);
+			logger.info("에러 있어서 다시 폼으로");
 			return "member/sign_up";
 		}
+		logger.info("if문 안걸림");
 		memberService.joinMemberInfo(memberVo);
+		logger.info("서비스까지 갔다옴");
 		return "redirect:/";
 	}
 	
@@ -188,12 +195,13 @@ public class MemberController {
 		return memberService.getMemberId(check_id);
 	}
 	
-	@RequestMapping(method = RequestMethod.POST, value="/check_nickname_ajax")
+	@RequestMapping(method = RequestMethod.POST, value="/check_nickname_ajax", produces = "application/text; charset=utf8")
 	@ResponseBody
 	public String check_nickname_ajax(MemberVO memberVO) {
 		logger.info("check_nickname_ajax()-POST");
 		String check_nickname = memberVO.getUserNickname();
 		System.out.println("check_nickname : " + check_nickname);
+		System.out.println("check_nickname compare in DB : " + memberService.getMemberNickname(check_nickname));
 		return memberService.getMemberNickname(check_nickname);
 			
 	}
